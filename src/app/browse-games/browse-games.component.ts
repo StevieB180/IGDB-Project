@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class BrowseGamesComponent implements OnInit {
-
+  testVar:string;
   constructor() { }
 
   ngOnInit() {
