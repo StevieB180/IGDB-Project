@@ -5,7 +5,7 @@ export interface IGame {
     publisher: string;
     releaseDate: Date;
     ageRating: IAgeRating[];
-    boxArtUrl: string;
+    boxArtUrl?: string;
     genres: string[];
     platforms: string[];
     avgRating: number;
