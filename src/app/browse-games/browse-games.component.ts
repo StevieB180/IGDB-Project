@@ -4,6 +4,7 @@ import { IGame } from 'src/models/game-model';
 import {FormControl} from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { GameInfoComponent } from '../modals/game-info/game-info.component';
+import { WriteReviewComponent } from '../modals/write-review/write-review.component';
 
 @Component({
   selector: 'app-browse-games',
@@ -25,6 +26,13 @@ export class BrowseGamesComponent implements OnInit {
 
   openGameInfoModal(game: IGame): void {
     const dialogRef = this.dialog.open(GameInfoComponent, {
+      maxWidth: '1000px',
+      data: game
+    })
+  }
+
+  openGameReviewModal(game: IGame): void{
+    const dialogRef = this.dialog.open(WriteReviewComponent, {
       maxWidth: '1000px',
       data: game
     })

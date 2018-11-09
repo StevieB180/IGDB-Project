@@ -26,7 +26,7 @@
                     <td>{{game.ageRating[ageRatingFormat].type}}: {{game.ageRating[ageRatingFormat].rating}}</td>
                     <td class="buttonContainer">
                         <button class="btn btn-success btn-sm" (click)='openGameInfoModal(game)'>More Info.</button>
-                        <button class="btn btn-primary btn-sm" style="margin-left: 5px;">Write Review</button>
+                        <button class="btn btn-primary btn-sm" (click)='openGameReviewModal(game)' style="margin-left: 5px;">Write Review</button>
                     </td>
                 </tr>
             </tbody>
