@@ -34,6 +34,10 @@ export class IgdbService {
           {
             type: 'PEGI',
             rating: '18'
+          },
+          {
+            type: 'ESRB',
+            rating: 'M'
           }
         ],
         genres: ['Action','First Person','Platformer'],
@@ -51,6 +55,10 @@ export class IgdbService {
           {
             type: 'PEGI',
             rating: '18'
+          },
+          {
+            type: 'ESRB',
+            rating: 'M'
           }
         ],
         genres: ['Action','First Person','Platformer'],
@@ -68,6 +76,10 @@ export class IgdbService {
           {
             type: 'PEGI',
             rating: '18'
+          },
+          {
+            type: 'ESRB',
+            rating: 'M'
           }
         ],
         genres: ['Action','Adventure','First Person','Role Playing'],

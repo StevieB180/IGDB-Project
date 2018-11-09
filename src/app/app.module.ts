@@ -1,6 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+//Angular material stuff
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  MatDialogModule
+} from '@angular/material';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowseGamesComponent } from './browse-games/browse-games.component';
@@ -26,9 +32,15 @@ import { ReviewRowComponent } from './review-row/review-row.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    GameInfoComponent,
+    WriteReviewComponent
+  ]
 })
 export class AppModule { }
