@@ -4,8 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowseGamesComponent } from './browse-games/browse-games.component';
-import { GameRowComponent } from './game-row/game-row.component';
-import { GameListComponent } from './game-list/game-list.component';
 import { LoginComponent } from './login-register/login/login.component';
 import { RegisterComponent } from './login-register/register/register.component';
 import { GameInfoComponent } from './modals/game-info/game-info.component';
@@ -18,8 +16,6 @@ import { ReviewRowComponent } from './review-row/review-row.component';
   declarations: [
     AppComponent,
     BrowseGamesComponent,
-    GameRowComponent,
-    GameListComponent,
     LoginComponent,
     RegisterComponent,
     GameInfoComponent,

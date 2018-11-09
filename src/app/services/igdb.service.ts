@@ -46,7 +46,7 @@ export class IgdbService {
         title: 'Half Life',
         developer: 'Valve',
         publisher: 'Sierra',
-        releaseDate: new Date('1999-8-12T00:00:00'),
+        releaseDate: new Date('1999-08-12T00:00:00'),
         ageRating: [
           {
             type: 'PEGI',

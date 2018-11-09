@@ -10,10 +10,12 @@ import { IGame } from 'src/models/game-model';
 export class BrowseGamesComponent implements OnInit {
 
   games: IGame[];
+  ageRatingFormat: number;
 
   constructor(public gameService: IgdbService) { }
 
   ngOnInit() {
+    this.ageRatingFormat = 0;
     this.games = this.gameService.getGames()
   }
 
