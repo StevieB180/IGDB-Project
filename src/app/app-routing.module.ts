@@ -11,7 +11,6 @@ const routes: Routes = [
   { path: '', redirectTo: 'browse', pathMatch: 'full' },
   { path: '**', redirectTo: 'browse', pathMatch: 'full' }
 ]
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
