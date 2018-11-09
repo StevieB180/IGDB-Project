@@ -5,13 +5,17 @@
 
     .topRow {
         display: grid;
-        grid-template-columns: 1fr auto;
+        grid-template-columns: 1fr auto auto;
         margin-bottom: 10px;
 
         .pageTitle{
             justify-self: left;
             font-weight: 600;
             font-size: 24px;
+        }
+
+        .btn {
+            margin: 5px;
         }
         .searchBox{
             justify-self: right;

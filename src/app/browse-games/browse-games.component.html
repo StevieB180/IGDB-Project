@@ -2,6 +2,10 @@
     <!-- Searching and stuff -->
     <div class="topRow">
         <div class="pageTitle">Games List</div>
+        <div>
+            <button class="btn btn-primary btn-sm" (click)='changeAgeRating()' *ngIf='ageRatingFormat == 1'>PEGI</button>
+            <button class="btn btn-primary btn-sm" (click)='changeAgeRating()' *ngIf='ageRatingFormat == 0'>ESRB</button>
+        </div>
         <div class="searchBox">
             <input formControl='searchTerm' type="text" value="" class="form-control" placeholder="Search...">
         </div>
