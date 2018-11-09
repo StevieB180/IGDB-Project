@@ -1,0 +1,30 @@
+.pageContainer {
+    margin: 20px;
+    display: grid;
+    grid-template-rows: 1fr auto;
+
+    .topRow {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        margin-bottom: 10px;
+
+        .pageTitle{
+            justify-self: left;
+            font-weight: 600;
+            font-size: 24px;
+        }
+        .searchBox{
+            justify-self: right;
+        }
+    }
+
+    td{
+        white-space: nowrap;
+    }
+    .buttonContainer {
+        display: grid;
+        grid-template-columns: repeat(2,auto);
+        justify-content: center;
+    }
+
+}

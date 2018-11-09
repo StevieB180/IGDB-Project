@@ -1,29 +1,35 @@
-<!-- Searching and stuff -->
-<div>
-  
+<div class="pageContainer">
+    <!-- Searching and stuff -->
+    <div class="topRow">
+        <div class="pageTitle">Games List</div>
+        <div class="searchBox">
+            <input formControl='searchTerm' type="text" value="" class="form-control" placeholder="Search...">
+        </div>
+    </div>
+    <!-- Actual games list -->
+    <div class="table-responsive">
+        <table class="table table-hover table-condensed">
+            <thead>
+                <th scope="col">Name</th>
+                <th scope="col">Developer</th>
+                <th scope="col">Publisher</th>
+                <th scope="col">Release Date</th>
+                <th scope="col">Age Rating</th>
+                <th scope="col"></th>
+            </thead>
+            <tbody>
+                <tr *ngFor='let game of games'>
+                    <td>{{game.title}}</td>
+                    <td>{{game.developer}}</td>
+                    <td>{{game.publisher}}</td>
+                    <td>{{game.releaseDate | date}}</td>
+                    <td>{{game.ageRating[ageRatingFormat].type}}: {{game.ageRating[ageRatingFormat].rating}}</td>
+                    <td class="buttonContainer">
+                        <button class="btn btn-success btn-sm">More Info.</button>
+                        <button class="btn btn-primary btn-sm" style="margin-left: 5px;">Write Review</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
-<!-- Actual games list -->
-<!-- <app-game-list [GamesInput]='games'></app-game-list> -->
-<table class="table">
-    <thead>
-        <th scope="col">Name</th>
-        <th scope="col">Developer</th>
-        <th scope="col">Publisher</th>
-        <th scope="col">Release Date</th>
-        <th scope="col">Age Rating</th>
-        <th scope="col">Info/Review</th>
-    </thead>
-    <tbody>
-        <tr *ngFor='let game of games'>
-            <td>{{game.title}}</td>
-            <td>{{game.developer}}</td>
-            <td>{{game.publisher}}</td>
-            <td>{{game.releaseDate | date}}</td>
-            <td>{{game.ageRating[ageRatingFormat].type}}: {{game.ageRating[ageRatingFormat].rating}}</td>
-            <td>
-                <button>More Info.</button>
-                <button>Write Review</button>
-            </td>
-        </tr>
-    </tbody>
-</table>

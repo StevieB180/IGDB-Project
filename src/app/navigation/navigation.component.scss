@@ -1,0 +1,36 @@
+.navContainer{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    padding: 10px;
+    background: #343a40;
+
+    .siteTitle {
+        color: white;
+        justify-self: left;
+        align-self: center;
+        margin-right: 20px;
+        font-size: 24px;
+    }
+    .normalNav {
+        justify-self: left;
+        align-self: center;
+    }
+    .loginRegisterNav {
+        justify-self: right;
+        align-self: center;
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        grid-column-gap: 10px;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+    a :hover {
+        cursor: pointer;
+    }
+    .active {
+        color: lightgray;
+    }
+}
