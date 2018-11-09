@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-write-review',
-  template: `
-    <p>
-      write-review works!
-    </p>
-  `,
+  templateUrl: 'write-review.component.html',
   styles: []
 })
 export class WriteReviewComponent implements OnInit {

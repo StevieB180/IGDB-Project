@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-game-info',
-  template: `
-    <p>
-      game-info works!
-    </p>
-  `,
+  templateUrl: 'game-info.component.html',
   styles: []
 })
 export class GameInfoComponent implements OnInit {

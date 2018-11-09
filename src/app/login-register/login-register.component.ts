@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-login-register',
-  template: `
-    <p>
-      login-register works!
-    </p>
-  `,
+  templateUrl: 'login-register.component.html',
   styles: []
 })
 export class LoginRegisterComponent implements OnInit {

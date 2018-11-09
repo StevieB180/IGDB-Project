@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-game-row',
-  template: `
-    <p>
-      game-row works!
-    </p>
-  `,
+  templateUrl: 'game-row.component.html',
   styles: []
 })
 export class GameRowComponent implements OnInit {
