@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.auth.doLogin(this.form.value)
     .then(res => {
-      this.myRoute.navigate(['games-list']);
+      this.myRoute.navigate(['browse']);
     }, firebase => {
       console.log(firebase);
       this.errorMessage = firebase.message;

@@ -5,7 +5,7 @@ import {FormControl} from '@angular/forms';
 import { MatDialog, MatGridTileHeaderCssMatStyler } from '@angular/material';
 import { GameInfoComponent } from '../modals/game-info/game-info.component';
 import { WriteReviewComponent } from '../modals/write-review/write-review.component';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-browse-games',
   templateUrl: './browse-games.component.html',

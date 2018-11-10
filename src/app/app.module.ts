@@ -39,15 +39,6 @@ import 'firebase/auth'
 import 'firebase/firestore';
 
 
-const routes: Routes = [
-  {path: '', redirectTo:'register', pathMatch: 'full', canActivate: [AuthGuard]},
-  {path: 'review-list', component: ReviewListComponent, canActivate: [AuthGuard]},
-  {path: 'browse-games', component: BrowseGamesComponent, canActivate: [AuthGuard]},
-  {path: 'home', component: ReviewListComponent, canActivate: [AuthGuard]},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: '**', redirectTo:'login', canActivate: [AuthGuard]}
-];
 
 @NgModule({
   declarations: [
@@ -78,8 +69,7 @@ const routes: Routes = [
     MatCardModule,
     MatListModule,
     MatInputModule,
-    MatProgressSpinnerModule,  
-    RouterModule.forRoot(routes)
+    MatProgressSpinnerModule
   ],
 
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
