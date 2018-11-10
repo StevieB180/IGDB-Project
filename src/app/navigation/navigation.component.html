@@ -1,4 +1,4 @@
-<div class="navContainer">
+<!-- <div class="navContainer">
     <div class="siteTitle">Game Review Site</div>
     <div class="normalNav">
         <a routerLink='browse' routerLinkActive="active">Browse </a>
@@ -7,4 +7,12 @@
         <a routerLink='login' routerLinkActive="active">Login</a>
         <a routerLink='register' routerLinkActive="active">Register</a>
     </div>
-</div>
+</div> -->
+<mat-toolbar color="primary">
+    <button mat-button routerLinkActive="active" *ngIf="userLoggedIn()" routerLink="browse-games">Browse games</button>
+  
+    <span style="flex:1 1 auto"></span>
+    <button mat-button routerLinkActive="active" *ngIf="!isLoggedIn" routerLink="login">Login</button>
+    <button mat-button routerLinkActive="active" *ngIf="isLoggedIn" (click)=onLogout()>Logout</button>
+    <button mat-button routerLinkActive="active" routerLink="register">Register</button>
+  </mat-toolbar>

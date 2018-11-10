@@ -1,11 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { RouterModule, Routes } from '@angular/router';
 
 //Angular material stuff
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  MatDialogModule
-} from '@angular/material';
+import { MatDialogModule,
+  MatToolbarModule,
+  MatButtonModule,
+  MatFormFieldModule,
+  MatCardModule,
+  MatListModule,
+  MatInputModule,
+  MatProgressSpinnerModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +25,29 @@ import { WriteReviewComponent } from './modals/write-review/write-review.compone
 import { NavigationComponent } from './navigation/navigation.component';
 import { ReviewListComponent } from './review-list/review-list.component';
 import { ReviewRowComponent } from './review-row/review-row.component';
+import { NotificationsComponent } from './notifications/notifications.component'
+
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { environment } from '../environments/environment';
+import { AuthGuard } from '../app/services/auth.guard';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule,} from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
+
+import 'firebase/app'
+import 'firebase/auth'
+import 'firebase/firestore';
+
+
+const routes: Routes = [
+  {path: '', redirectTo:'register', pathMatch: 'full', canActivate: [AuthGuard]},
+  {path: 'review-list', component: ReviewListComponent, canActivate: [AuthGuard]},
+  {path: 'browse-games', component: BrowseGamesComponent, canActivate: [AuthGuard]},
+  {path: 'home', component: ReviewListComponent, canActivate: [AuthGuard]},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: '**', redirectTo:'login', canActivate: [AuthGuard]}
+];
 
 @NgModule({
   declarations: [
@@ -28,15 +59,30 @@ import { ReviewRowComponent } from './review-row/review-row.component';
     WriteReviewComponent,
     NavigationComponent,
     ReviewListComponent,
-    ReviewRowComponent
+    ReviewRowComponent,
+    NotificationsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,  
+    AngularFireModule.initializeApp(environment.firebase,),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatListModule,
+    MatInputModule,
+    MatProgressSpinnerModule,  
+    RouterModule.forRoot(routes)
   ],
-  providers: [],
+
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent],
   entryComponents: [
     GameInfoComponent,
