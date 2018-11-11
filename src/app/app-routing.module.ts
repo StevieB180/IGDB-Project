@@ -4,14 +4,19 @@ import { BrowseGamesComponent } from './browse-games/browse-games.component';
 import { LoginComponent } from './login-register/login/login.component';
 import { RegisterComponent } from './login-register/register/register.component';
 import { AuthGuard } from '../app/services/auth.guard';
+import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
+  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+     // { path: '**', redirectTo: 'welcome', pathMatch: 'full' },
+
   { path: 'browse', component: BrowseGamesComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: '', redirectTo: 'browse', pathMatch: 'full' },
-  { path: '**', redirectTo: 'browse', pathMatch: 'full' }
+ //{ path: '', redirectTo: 'browse', pathMatch: 'full' },
+ // { path: '**', redirectTo: 'browse', pathMatch: 'full' }
 ]
 
 //Will imploment auth when application near finshed 

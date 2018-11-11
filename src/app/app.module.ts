@@ -37,6 +37,7 @@ import { AngularFireModule } from '@angular/fire';
 import 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore';
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -52,6 +53,7 @@ import 'firebase/firestore';
     ReviewListComponent,
     ReviewRowComponent,
     NotificationsComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

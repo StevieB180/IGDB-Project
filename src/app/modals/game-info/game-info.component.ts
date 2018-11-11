@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { IGame } from 'src/models/game-model';
+import { BrowseGamesComponent } from '../../browse-games/browse-games.component';
 
 @Component({
   selector: 'app-game-info',

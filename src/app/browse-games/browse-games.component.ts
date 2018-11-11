@@ -36,6 +36,9 @@ export class BrowseGamesComponent implements OnInit {
       data: game
     })
   }
+  closeGameInfoModal(game: IGame): void {
+    const dialogRef = this.dialog.closeAll()
+  }
 
   openGameReviewModal(game: IGame): void{
     const dialogRef = this.dialog.open(WriteReviewComponent, {
