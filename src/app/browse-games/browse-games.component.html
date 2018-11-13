@@ -11,31 +11,6 @@
         </div>
     </div>
     <!-- Actual games list -->
-    <!-- <div class="table-responsive" style="display: table">
-        <table class="table table-hover table-condensed">
-            <thead>
-                <th scope="col">Name</th>
-                <th scope="col">Developer</th>
-                <th scope="col">Publisher</th>
-                <th scope="col">Release Date</th>
-                <th scope="col">Age Rating</th>
-                <th scope="col"></th>
-            </thead>
-            <tbody>
-                <tr *ngFor='let game of games'>
-                    <td>{{game.title}}</td>
-                    <td>{{game.developer}}</td>
-                    <td>{{game.publisher}}</td>
-                    <td>{{game.releaseDate | date}}</td>
-                    <td>{{game.ageRating[ageRatingFormat].type}}: {{game.ageRating[ageRatingFormat].rating}}</td>
-                    <td class="buttonContainer">
-                        <button class="btn btn-success btn-sm" (click)='openGameInfoModal(game)'>More Info.</button>
-                        <button class="btn btn-primary btn-sm" (click)='openGameReviewModal(game)' style="margin-left: 5px;">Write Review</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div> -->
     <div class="tableContainer">
         <table mat-table [dataSource]='games' class="mat-elevation-z8">
             <ng-container matColumnDef="title">

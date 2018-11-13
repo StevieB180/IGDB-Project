@@ -9,7 +9,13 @@
         justify-self: left;
         align-self: center;
         margin-right: 20px;
-        font-size: 24px;
+        // font-size: 24px;
+
+        width: 250px;
+        img {
+            min-width: 50px;
+            width: 100%;
+        }
     }
     .normalNav {
         justify-self: left;
@@ -30,12 +36,13 @@
     a {
         text-decoration: none;
         color: white;
+        font-weight: 600;
     }
     a :hover {
         cursor: pointer;
     }
     .active {
-        color: lightgray;
+        color: #ff00f8;
     }
 }
 
