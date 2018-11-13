@@ -25,7 +25,7 @@ export class IgdbService {
     return this.http.get(this.ROOT_URL  + '/games/', {headers: headers})
  
  
- 
+  
   }
 
   //Returns a list of games
