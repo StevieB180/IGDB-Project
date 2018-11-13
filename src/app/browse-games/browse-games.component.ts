@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { IgdbService } from '../services/igdb.service';
-import { IGame } from 'src/models/game-model';
+import { IGame, EESRB, EPEGI } from 'src/models/game-model';
 import {FormControl} from '@angular/forms';
-import { MatDialog, MatGridTileHeaderCssMatStyler } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { GameInfoComponent } from '../modals/game-info/game-info.component';
 import { WriteReviewComponent } from '../modals/write-review/write-review.component';
-import { Router } from '@angular/router';
-import { Observable } from "rxjs";
-import { debounceTime, distinctUntilChanged, filter } from "rxjs/operators"
+import { debounceTime, distinctUntilChanged } from "rxjs/operators"
 
 @Component({
   selector: 'app-browse-games',
@@ -65,10 +63,14 @@ export class BrowseGamesComponent implements OnInit {
   searchGame(filterBy: string): IGame[] {
     if (filterBy.length > 0) {
       filterBy = filterBy.toLocaleLowerCase();
-      return this.gamesMaster.filter((g: IGame) => 
-        g.title.toLocaleLowerCase().indexOf(filterBy) !== -1);
+      let filterResults = this.gamesMaster.filter((g: IGame) => 
+        g.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
+
+      console.table(filterResults);
+      return filterResults;
     }
     else {
+      console.table(this.gamesMaster);
       return this.gamesMaster;
     }
   }
