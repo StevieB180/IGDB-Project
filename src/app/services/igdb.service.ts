@@ -3,21 +3,12 @@ import { IGame } from 'src/models/game-model';
 import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class IgdbService {
-  gamesMaster: IGame[];   //Master list of games. Holds all currently stored games
-  games : IGame[];  //List of games that can be filtered/search & is returned to components
-  ROOT_URL: string = "https://igdb-proxy-web.herokuapp.com/https://api-endpoint.igdb.com"
-
-  constructor(private http: HttpClient){}
-
-  getPosts() {
-    
-
-
+/*
+<<<<<<< HEAD
  
     let headers = new HttpHeaders()
     headers = headers.set('user-key','43264b7755b2a0ed6f2f76f4374c6604')
@@ -26,88 +17,23 @@ export class IgdbService {
  
  
   
+=======*/
+  constructor(private _http: HttpClient) {
+/*>>>>>>> 014d02052f0a7cc44a0fc90180369e4e6c522f7f*/
+  }
+  //Returns a list of sample games
+  getSampleGames(): Observable<IGame[]> {
+    return this._http.get<IGame[]>('http://localhost:3000/games');
   }
 
-  //Returns a list of games
-  getGames() {
-    return this.games
-  }
+  //Returns a list of games from the IGDB API
+  getGames(): Observable<IGame[]> {
+    let headers = new HttpHeaders();
 
-  //Searches through the master list and puts results in the games list
-  searchGames() {
-
-  }
-
-  //For Testing
-  addSampleGames() {
-    this.gamesMaster = [
-      {
-        gameID: 'GM1',
-        title: 'Mirrors Edge',
-        developer: 'DICE',
-        publisher: 'EA',
-        releaseDate: new Date('2008-10-19T00:00:00'),
-        ageRating: [
-          {
-            type: 'PEGI',
-            rating: '18'
-          },
-          {
-            type: 'ESRB',
-            rating: 'M'
-          }
-        ],
-        genres: ['Action','First Person','Platformer'],
-        platforms: ['PC','Xbox 360','Playstation 3'],
-        avgRating: 90,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non eros viverra, fringilla massa rhoncus, dictum nulla. In rhoncus nunc sed ante maximus tincidunt. Praesent ut lectus nisl. Etiam elementum dictum elit at aliquet. Sed vitae vehicula massa, sed luctus velit. Morbi aliquam sodales tempor. Praesent tempus, felis et luctus porttitor, quam lectus elementum nulla, sit amet pretium nisi dolor vel eros. Nulla vestibulum eu velit ac semper. Morbi gravida rhoncus libero, a rhoncus sapien. Morbi non sem a ligula viverra fermentum elementum ac odio. Fusce eget justo eros.'
-      },
-      {
-        gameID: 'GM2',
-        title: 'Half Life',
-        developer: 'Valve',
-        publisher: 'Sierra',
-        releaseDate: new Date('1999-08-12T00:00:00'),
-        ageRating: [
-          {
-            type: 'PEGI',
-            rating: '18'
-          },
-          {
-            type: 'ESRB',
-            rating: 'M'
-          }
-        ],
-        genres: ['Action','First Person','Platformer'],
-        platforms: ['PC','Playstation 2','OSX','Linux'],
-        avgRating: 100,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non eros viverra, fringilla massa rhoncus, dictum nulla. In rhoncus nunc sed ante maximus tincidunt. Praesent ut lectus nisl. Etiam elementum dictum elit at aliquet. Sed vitae vehicula massa, sed luctus velit. Morbi aliquam sodales tempor. Praesent tempus, felis et luctus porttitor, quam lectus elementum nulla, sit amet pretium nisi dolor vel eros. Nulla vestibulum eu velit ac semper. Morbi gravida rhoncus libero, a rhoncus sapien. Morbi non sem a ligula viverra fermentum elementum ac odio. Fusce eget justo eros.'
-      },
-      {
-        gameID: 'GM3',
-        title: 'The Elder Scrolls V: Skyrim',
-        developer: 'Bethesda',
-        publisher: 'Zenimax',
-        releaseDate: new Date('2011-11-11T00:00:00'),
-        ageRating: [
-          {
-            type: 'PEGI',
-            rating: '18'
-          },
-          {
-            type: 'ESRB',
-            rating: 'M'
-          }
-        ],
-        genres: ['Action','Adventure','First Person','Role Playing'],
-        platforms: ['PC','Xbox 360','Xbox One',
-                    'Playstation 3','Playstation 4',
-                    'Nintendo Switch','Amazon Alexa'],
-        avgRating: 80,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non eros viverra, fringilla massa rhoncus, dictum nulla. In rhoncus nunc sed ante maximus tincidunt. Praesent ut lectus nisl. Etiam elementum dictum elit at aliquet. Sed vitae vehicula massa, sed luctus velit. Morbi aliquam sodales tempor. Praesent tempus, felis et luctus porttitor, quam lectus elementum nulla, sit amet pretium nisi dolor vel eros. Nulla vestibulum eu velit ac semper. Morbi gravida rhoncus libero, a rhoncus sapien. Morbi non sem a ligula viverra fermentum elementum ac odio. Fusce eget justo eros.'
-      }
-    ]
-
-    this.games = this.gamesMaster;
+    return this._http.get<IGame[]>('https://cors-anywhere.herokuapp.com/https://api-endpoint.igdb.com/games/?fields=*&limit=10',
+    {headers: {
+      "Accept":"application/json",
+      "user-key":"43264b7755b2a0ed6f2f76f4374c6604"
+    }})
   }
 }

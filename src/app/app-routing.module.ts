@@ -9,14 +9,11 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-     // { path: '**', redirectTo: 'welcome', pathMatch: 'full' },
-
   { path: 'browse', component: BrowseGamesComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
- //{ path: '', redirectTo: 'browse', pathMatch: 'full' },
- // { path: '**', redirectTo: 'browse', pathMatch: 'full' }
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ]
 
 //Will imploment auth when application near finshed 

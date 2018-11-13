@@ -8,23 +8,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
-
-  title: string = "";
   isLoggedIn: boolean;
-    constructor(private auth: AuthService, private myRouth: Router) { }
   
-    userLoggedIn():boolean{
-      this.isLoggedIn = this.auth.isLoggedIn();
-      return this.isLoggedIn
-    }
-  
-    onLogout() {
-      this.auth.doLogout();
-      this.isLoggedIn = this.auth.isLoggedIn();
-      this.myRouth.navigate(['login']);
-    }
-    ngOnInit() {
-      this.isLoggedIn = this.auth.isLoggedIn();
-    }
+  constructor(private auth: AuthService, private myRouth: Router) { }
 
+  userLoggedIn():boolean{
+    this.isLoggedIn = this.auth.isLoggedIn();
+    return this.isLoggedIn
+  }
+
+  onLogout() {
+    this.auth.doLogout();
+    this.isLoggedIn = this.auth.isLoggedIn();
+    this.myRouth.navigate(['login']);
+  }
+
+  ngOnInit() {
+    this.isLoggedIn = this.auth.isLoggedIn();
+  }
 }

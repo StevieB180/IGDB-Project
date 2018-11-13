@@ -9,11 +9,21 @@
         justify-self: left;
         align-self: center;
         margin-right: 20px;
-        font-size: 24px;
+        // font-size: 24px;
+
+        width: 250px;
+        img {
+            min-width: 50px;
+            width: 100%;
+        }
     }
     .normalNav {
         justify-self: left;
         align-self: center;
+
+        a {
+            margin-right: 10px;
+        }
     }
     .loginRegisterNav {
         justify-self: right;
@@ -26,11 +36,18 @@
     a {
         text-decoration: none;
         color: white;
+        font-weight: 600;
     }
     a :hover {
         cursor: pointer;
     }
     .active {
-        color: lightgray;
+        color: #ff00f8;
+    }
+}
+
+@media only screen and (max-width: 620px) {
+    .siteTitle {
+        display: none;
     }
 }

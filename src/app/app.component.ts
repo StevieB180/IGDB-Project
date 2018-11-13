@@ -10,8 +10,9 @@ export class AppComponent implements OnInit {
   
   constructor(private gameService: IgdbService) { }
 
+  //Console desplay the Jsons
   ngOnInit() {
-    this.gameService.getPosts().subscribe(element => {
+    this.gameService.getGames().subscribe(element => {
       console.log(element)
     });
   }

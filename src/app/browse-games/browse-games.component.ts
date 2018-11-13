@@ -1,27 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import { IgdbService } from '../services/igdb.service';
-import { IGame } from 'src/models/game-model';
+import { IGame, EESRB, EPEGI } from 'src/models/game-model';
 import {FormControl} from '@angular/forms';
-import { MatDialog, MatGridTileHeaderCssMatStyler } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { GameInfoComponent } from '../modals/game-info/game-info.component';
 import { WriteReviewComponent } from '../modals/write-review/write-review.component';
-import { Router } from '@angular/router';
+import { debounceTime, distinctUntilChanged } from "rxjs/operators"
+
 @Component({
   selector: 'app-browse-games',
   templateUrl: './browse-games.component.html',
   styleUrls: ['./browse-games.component.scss']
 })
 export class BrowseGamesComponent implements OnInit {
-
+  
+  displayedColumns: string[] = ['title','developer','publisher','releaseDate','ageRating','actionButtons'];
+  gamesMaster: IGame[];
   games: IGame[];
   ageRatingFormat: number;
   searchTerm: FormControl = new FormControl;
 
-  constructor(public gameService: IgdbService, public dialog: MatDialog) { }
+  constructor(public _gameService: IgdbService, public dialog: MatDialog) {
+    this.searchTerm.valueChanges
+    .pipe(debounceTime(1000))
+    .pipe(distinctUntilChanged())
+    .subscribe(searchTerm =>
+      this.games = this.searchGame(searchTerm)
+    )
+  }
 
   ngOnInit() {
     this.ageRatingFormat = 0;
-    this.games = this.gameService.getGames()
+
+    this._gameService.getGames().subscribe(data =>
+      this.gamesMaster = data);
+    this._gameService.getGames().subscribe(data =>
+      this.games = data);
   }
 
   changeAgeRating(): void {
@@ -46,4 +60,18 @@ export class BrowseGamesComponent implements OnInit {
     })
   }
 
+  searchGame(filterBy: string): IGame[] {
+    if (filterBy.length > 0) {
+      filterBy = filterBy.toLocaleLowerCase();
+      let filterResults = this.gamesMaster.filter((g: IGame) => 
+        g.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
+
+      console.table(filterResults);
+      return filterResults;
+    }
+    else {
+      console.table(this.gamesMaster);
+      return this.gamesMaster;
+    }
+  }
 }

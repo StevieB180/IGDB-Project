@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { RouterModule, Routes } from '@angular/router';
 
 //Angular material stuff
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,7 +11,8 @@ import { MatDialogModule,
   MatCardModule,
   MatListModule,
   MatInputModule,
-  MatProgressSpinnerModule } from '@angular/material';
+  MatProgressSpinnerModule,
+  MatTableModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,6 +37,7 @@ import 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore';
 import { HomeComponent } from './home/home.component';
+import { IgdbService } from './services/igdb.service';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -73,10 +73,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatListModule,
     MatInputModule,
     MatProgressSpinnerModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule
   ],
 
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, IgdbService],
   bootstrap: [AppComponent],
   entryComponents: [
     GameInfoComponent,
