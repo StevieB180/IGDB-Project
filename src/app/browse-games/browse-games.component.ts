@@ -71,4 +71,5 @@ export class BrowseGamesComponent implements OnInit {
     else {
       return this.gamesMaster;
     }
+  }
 }
