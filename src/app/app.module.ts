@@ -11,7 +11,8 @@ import { MatDialogModule,
   MatCardModule,
   MatListModule,
   MatInputModule,
-  MatProgressSpinnerModule } from '@angular/material';
+  MatProgressSpinnerModule,
+  MatTableModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -72,7 +73,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatListModule,
     MatInputModule,
     MatProgressSpinnerModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule
   ],
 
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, IgdbService],

@@ -16,6 +16,8 @@ import { debounceTime, distinctUntilChanged, filter } from "rxjs/operators"
 })
 export class BrowseGamesComponent implements OnInit {
 
+  displayedColumns: string[] = ['title','developer','publisher','releaseDate','ageRating','moreInfo','writeReview']; 
+
   gamesMaster: IGame[];
   games: IGame[];
   ageRatingFormat: number;
