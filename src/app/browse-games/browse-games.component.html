@@ -7,7 +7,7 @@
             <button class="btn btn-primary btn-sm" (click)='changeAgeRating()' *ngIf='ageRatingFormat == 0'>ESRB</button>
         </div>
         <div class="searchBox">
-            <input formControl='searchTerm' type="text" value="" class="form-control" placeholder="Search...">
+            <input [formControl]='searchTerm' type="text" value="" class="form-control" placeholder="Search...">
         </div>
     </div>
     <!-- Actual games list -->
