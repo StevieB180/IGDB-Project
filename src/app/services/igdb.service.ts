@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IGame } from 'src/models/game-model';
 import { Observable } from 'rxjs';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 
 @Injectable({
@@ -9,8 +10,23 @@ import { Observable } from 'rxjs';
 export class IgdbService {
   gamesMaster: IGame[];   //Master list of games. Holds all currently stored games
   games : IGame[];  //List of games that can be filtered/search & is returned to components
+  ROOT_URL: string = "https://igdb-proxy-web.herokuapp.com/https://api-endpoint.igdb.com"
 
-  constructor() { }
+  constructor(private http: HttpClient){}
+
+  getPosts() {
+    
+
+
+ 
+    let headers = new HttpHeaders()
+    headers = headers.set('user-key','43264b7755b2a0ed6f2f76f4374c6604')
+    headers = headers.set('X-Requested-With', 'IDGBProject')
+    return this.http.get(this.ROOT_URL  + '/games/', {headers: headers})
+ 
+ 
+ 
+  }
 
   //Returns a list of games
   getGames() {

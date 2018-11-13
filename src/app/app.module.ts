@@ -38,6 +38,7 @@ import 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore';
 import { HomeComponent } from './home/home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -71,7 +72,8 @@ import { HomeComponent } from './home/home.component';
     MatCardModule,
     MatListModule,
     MatInputModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    HttpClientModule
   ],
 
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
