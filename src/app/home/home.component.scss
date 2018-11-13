@@ -1,0 +1,24 @@
+.pageContainer {
+    margin: 5px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    
+    .imgContainer {
+        justify-self: center;
+        margin: 20px;
+        width: 90%;
+
+        img {
+            width: 100%;
+        }
+    }
+    .creatorContainer {
+        justify-self: center;
+        text-align: center;
+
+        div {
+            display: grid;
+            grid-template-rows: repeat(3, auto);
+        }
+    }
+}
