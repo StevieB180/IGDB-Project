@@ -15,9 +15,8 @@ import { debounceTime, distinctUntilChanged, filter } from "rxjs/operators"
   styleUrls: ['./browse-games.component.scss']
 })
 export class BrowseGamesComponent implements OnInit {
-
-  displayedColumns: string[] = ['title','developer','publisher','releaseDate','ageRating','moreInfo','writeReview']; 
-
+  
+  displayedColumns: string[] = ['title','developer','publisher','releaseDate','ageRating','actionButtons'];
   gamesMaster: IGame[];
   games: IGame[];
   ageRatingFormat: number;
@@ -37,9 +36,8 @@ export class BrowseGamesComponent implements OnInit {
 
     this._gameService.getGames().subscribe(data =>
       this.gamesMaster = data);
-    
-      this._gameService.getGames().subscribe(data =>
-        this.games = data);
+    this._gameService.getGames().subscribe(data =>
+      this.games = data);
   }
 
   changeAgeRating(): void {

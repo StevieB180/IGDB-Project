@@ -58,15 +58,10 @@
                 <th mat-header-cell *matHeaderCellDef> Age Rating </th>
                 <td mat-cell *matCellDef="let game"> {{game.ageRating[ageRatingFormat].type}}: {{game.ageRating[ageRatingFormat].rating}} </td>
             </ng-container>
-            <ng-container matColumnDef="moreInfo">
+            <ng-container matColumnDef="actionButtons">
                 <th mat-header-cell *matHeaderCellDef>  </th>
                 <td mat-cell *matCellDef="let game">
                     <button class="btn btn-success btn-sm" (click)='openGameInfoModal(game)'>More Info.</button>
-                </td>
-            </ng-container>
-            <ng-container matColumnDef="writeReview">
-                <th mat-header-cell *matHeaderCellDef>  </th>
-                <td mat-cell *matCellDef="let game">
                     <button class="btn btn-primary btn-sm" (click)='openGameReviewModal(game)'>Write Review</button>
                 </td>
             </ng-container>
