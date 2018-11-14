@@ -22,10 +22,10 @@ export class BrowseGamesComponent implements OnInit {
   searchTerm: FormControl = new FormControl;
 
   constructor(public _gameService: IgdbService, public dialog: MatDialog) {
-    // this.searchTerm.valueChanges
-    // .pipe(debounceTime(1000))
-    // .pipe(distinctUntilChanged())
-    // .subscribe(searchTerm => this.games = this.searchGame(searchTerm))
+    this.searchTerm.valueChanges
+    .pipe(debounceTime(1000))
+    .pipe(distinctUntilChanged())
+    .subscribe(searchTerm => this.games = this.searchGame(searchTerm))
   }
 
   ngOnInit() {
@@ -39,15 +39,16 @@ export class BrowseGamesComponent implements OnInit {
       this.gameIDs = x);
   }
 
+  //Adds a list of games with all data to games master
   testButton() {
-    if(this.gameIDs) {
+    if(this.gameIDs.length > 0) {
       console.log('IDs found')
       if(this.gameIDs.length > 0) {
         this.gameIDs.forEach(g =>
-          this._gameService.getGameInfo(g.id).subscribe(x => this.games.push(x[0])))
+          this._gameService.getGameInfo(g.id).subscribe(x => this.gamesMaster.push(x[0])))
       }
     }
-    console.log(this.games);
+    console.log(this.gamesMaster);
   }
 
   changeAgeRating(): void {
@@ -75,17 +76,17 @@ export class BrowseGamesComponent implements OnInit {
   }
 
   searchGame(filterBy: string) {
-    // if (filterBy.length > 0) {
-    //   filterBy = filterBy.toLocaleLowerCase();
-    //   let filterResults = this.gamesMaster.filter((g: IGame) => 
-    //     g.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
+    if (filterBy.length > 0) {
+      filterBy = filterBy.toLocaleLowerCase();
+      let filterResults = this.gamesMaster.filter((g: IGame) => 
+        g.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
 
-    //   console.table(filterResults);
-    //   return filterResults;
-    // }
-    // else {
-    //   console.table(this.gamesMaster);
-    //   return this.gamesMaster;
-    // }
+      console.table(filterResults);
+      return filterResults;
+    }
+    else {
+      console.table(this.gamesMaster);
+      return this.gamesMaster;
+    }
   }
 }
