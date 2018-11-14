@@ -1,7 +1,7 @@
 <div class="pageContainer">
     <!-- Searching and stuff -->
     <div class="topRow">
-        <div class="pageTitle">Games List</div>
+        <div class="pageTitle" (click)='testButton()'>Games List</div>
         <div>
             <button class="btn btn-primary btn-sm" (click)='changeAgeRating()' *ngIf='ageRatingFormat == 1'>PEGI</button>
             <button class="btn btn-primary btn-sm" (click)='changeAgeRating()' *ngIf='ageRatingFormat == 0'>ESRB</button>

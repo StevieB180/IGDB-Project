@@ -13,31 +13,31 @@
 // }
 
 export interface IGame {
-    category: number;
-    collection: number;
-    cover: ICover;
-    created_at: number;
-    esrb: IESRB;
-    genres: number[];
-    id: number;
-    name: string;
-    summary: string;
-    themes: number[];
-    url: string;
+    category?: number;
+    collection?: number;
+    cover?: ICover;
+    created_at?: number;
+    esrb?: IESRB;
+    genres?: number[];
+    id?: number;
+    name?: string;
+    summary?: string;
+    themes?: number[];
+    url?: string;
 }
 
 export interface ICover {
-    height: number;
-    url: string;
-    width: number;
+    height?: number;
+    url?: string;
+    width?: number;
 }
 
 export interface IESRB {
-    rating: EESRB;
+    rating?: EESRB;
 }
 
 export interface IPEGI {
-    rating: number;
+    rating?: number;
 }
 
 export enum EPEGI {
