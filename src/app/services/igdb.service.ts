@@ -7,8 +7,19 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class IgdbService {
-
+/*
+<<<<<<< HEAD
+ 
+    let headers = new HttpHeaders()
+    headers = headers.set('user-key','43264b7755b2a0ed6f2f76f4374c6604')
+    headers = headers.set('X-Requested-With', 'IDGBProject')
+    return this.http.get(this.ROOT_URL  + '/games/', {headers: headers})
+ 
+ 
+  
+=======*/
   constructor(private _http: HttpClient) {
+/*>>>>>>> 014d02052f0a7cc44a0fc90180369e4e6c522f7f*/
   }
   //Returns a list of sample games
   getSampleGames(): Observable<IGame[]> {
