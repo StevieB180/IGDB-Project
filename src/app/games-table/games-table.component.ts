@@ -15,4 +15,8 @@ export class GamesTableComponent implements OnInit {
   ngOnInit() {
   }
 
+  getGameCover(g : IGame): string {
+    return ('http:' + g.cover.url);
+  }
+
 }

@@ -19,7 +19,7 @@ export class IgdbService {
   }
 
   getGameIDs(): Observable<IGame[]> {
-    return this._http.get<IGame[]>('https://cors-anywhere.herokuapp.com/https://api-endpoint.igdb.com/games/?fields=*&limit=10 ',
+    return this._http.get<IGame[]>('https://cors-anywhere.herokuapp.com/https://api-endpoint.igdb.com/games/?fields=*&limit=10',
     {headers: {
       "Accept":"application/json",
       "user-key":"43264b7755b2a0ed6f2f76f4374c6604"
@@ -44,6 +44,30 @@ export class IgdbService {
       console.log('Getting individual game information for all games')
       this.gameIDs.forEach(async g =>
         await this.getGameInfo(g.id).toPromise().then(x => this.gamesList.push(x[0])))
+      }
+      else {
+        console.log('No game IDs');
+      }})
+
+    console.log(this.gamesList);
+    return of(this.gamesList);
+  }
+
+  searchForGameIDs(searchTerm:string) {
+    return this._http.get<IGame[]>('https://cors-anywhere.herokuapp.com/https://api-endpoint.igdb.com/games/?search='+ searchTerm + '?fields=*&limit=5 ',
+    {headers: {
+      "Accept":"application/json",
+      "user-key":"43264b7755b2a0ed6f2f76f4374c6604"
+    }})
+  }
+  
+  searchGames(searchTerm:string) {
+    this.searchForGameIDs(searchTerm).subscribe(x => {
+      this.gameIDs = x
+      if(this.gameIDs.length > 1) {
+        console.log('Getting individual game information for all games')
+        this.gameIDs.forEach(async g =>
+          await this.getGameInfo(g.id).toPromise().then(x => this.gamesList.push(x[0])))
       }
       else {
         console.log('No game IDs');

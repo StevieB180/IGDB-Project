@@ -11,5 +11,5 @@
         </div>
     </div>
     <!-- Actual games list -->
-    <app-games-table *ngIf='games.length == 10' [GamesInput]='games'></app-games-table>
+    <app-games-table *ngIf='tableEnabled' [GamesInput]='games'></app-games-table>
 </div>

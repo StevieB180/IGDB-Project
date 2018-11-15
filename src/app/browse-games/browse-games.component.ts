@@ -5,7 +5,7 @@ import {FormControl} from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { GameInfoComponent } from '../modals/game-info/game-info.component';
 import { WriteReviewComponent } from '../modals/write-review/write-review.component';
-import { debounceTime, distinctUntilChanged } from "rxjs/operators"
+import { debounceTime, distinctUntilChanged, filter } from "rxjs/operators"
 
 @Component({
   selector: 'app-browse-games',
@@ -13,31 +13,29 @@ import { debounceTime, distinctUntilChanged } from "rxjs/operators"
   styleUrls: ['./browse-games.component.scss']
 })
 export class BrowseGamesComponent implements OnInit {
-  
-  gamesMaster: IGame[] = [];
   games: IGame[] = [];
-  // gameIDs: IGame[] = [];
   ageRatingFormat: number = 0;
   searchTerm: FormControl = new FormControl;
+  tableEnabled: boolean = false;
 
   constructor(public _gameService: IgdbService, public dialog: MatDialog) {
     this.searchTerm.valueChanges
     .pipe(debounceTime(1000))
     .pipe(distinctUntilChanged())
-    .subscribe(searchTerm => this.games = this.searchGame(searchTerm))
+    .subscribe(searchTerm => this.searchGame(searchTerm))
   }
 
-  ngOnInit() {
-    this._gameService.getGamesFull().subscribe(x => {
-      this.gamesMaster = x;
+  async ngOnInit() {
+    await this._gameService.getGamesFull().subscribe(x => {
       this.games = x
       })
+
+    this.tableEnabled = true;
   }
 
   //Adds a list of games with all data to games master
   testButton() {
-    console.log(this.gamesMaster.length);
-    console.log(this.games.length);
+    console.log(this.games);
   }
 
   changeAgeRating(): void {
@@ -59,17 +57,12 @@ export class BrowseGamesComponent implements OnInit {
     })
   }
 
-  searchGame(filterBy: string) {
-    if (filterBy.length > 0) {
-      filterBy = filterBy.toLocaleLowerCase();
-      let filterResults = this.gamesMaster.filter((g: IGame) => 
-        g.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
+  async searchGame(filterBy: string) {
+    this.tableEnabled = false;
 
-      console.table(filterResults);
-      return filterResults;
-    }
-    else {
-      return this.gamesMaster;
-    }
+    await this._gameService.searchGames(filterBy).subscribe(x =>
+      this.games);
+
+    this.tableEnabled = true;
   }
 }
