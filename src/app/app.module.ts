@@ -39,6 +39,7 @@ import 'firebase/firestore';
 import { HomeComponent } from './home/home.component';
 import { IgdbService } from './services/igdb.service';
 import { HttpClientModule } from '@angular/common/http';
+import { GamesTableComponent } from './games-table/games-table.component';
 
 
 
@@ -55,6 +56,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReviewRowComponent,
     NotificationsComponent,
     HomeComponent,
+    GamesTableComponent,
   ],
   imports: [
     BrowserModule,

@@ -14,10 +14,9 @@ import { debounceTime, distinctUntilChanged } from "rxjs/operators"
 })
 export class BrowseGamesComponent implements OnInit {
   
-  displayedColumns: string[] = ['title','developer','publisher','releaseDate','ageRating','actionButtons'];
   gamesMaster: IGame[] = [];
   games: IGame[] = [];
-  gameIDs: IGame[] = [];
+  // gameIDs: IGame[] = [];
   ageRatingFormat: number = 0;
   searchTerm: FormControl = new FormControl;
 
@@ -29,26 +28,16 @@ export class BrowseGamesComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.ageRatingFormat = 0;
-    // this._gameService.getGames().subscribe(data =>
-    //   this.gamesMaster = data);
-    // this._gameService.getGames().subscribe(data =>
-    //   this.games = data);
-
-    this._gameService.getGamesIDs().subscribe(x =>
-      this.gameIDs = x);
+    this._gameService.getGamesFull().subscribe(x => {
+      this.gamesMaster = x;
+      this.games = x
+      })
   }
 
   //Adds a list of games with all data to games master
   testButton() {
-    if(this.gameIDs.length > 0) {
-      console.log('IDs found')
-      if(this.gameIDs.length > 0) {
-        this.gameIDs.forEach(g =>
-          this._gameService.getGameInfo(g.id).subscribe(x => this.gamesMaster.push(x[0])))
-      }
-    }
-    console.log(this.gamesMaster);
+    console.log(this.gamesMaster.length);
+    console.log(this.games.length);
   }
 
   changeAgeRating(): void {
@@ -56,17 +45,12 @@ export class BrowseGamesComponent implements OnInit {
     { this.ageRatingFormat = 1; }
     else
     { this.ageRatingFormat = 0}
-
-    console.log(this.games);
   }
 
   openGameInfoModal(game: IGame): void {
     const dialogRef = this.dialog.open(GameInfoComponent, {
       data: game
     })
-  }
-  closeGameInfoModal(game: IGame): void {
-    const dialogRef = this.dialog.closeAll()
   }
 
   openGameReviewModal(game: IGame): void{
@@ -85,7 +69,6 @@ export class BrowseGamesComponent implements OnInit {
       return filterResults;
     }
     else {
-      console.table(this.gamesMaster);
       return this.gamesMaster;
     }
   }
