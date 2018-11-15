@@ -59,10 +59,13 @@ export class BrowseGamesComponent implements OnInit {
 
   async searchGame(filterBy: string) {
     this.tableEnabled = false;
+    this.games.length = 0;
+    let newGames: IGame[] = [];
 
     await this._gameService.searchGames(filterBy).subscribe(x =>
-      this.games);
+      newGames = x);
 
+    this.games = newGames;
     this.tableEnabled = true;
   }
 }

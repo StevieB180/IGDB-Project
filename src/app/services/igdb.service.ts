@@ -62,6 +62,7 @@ export class IgdbService {
   }
   
   searchGames(searchTerm:string) {
+    this.gameIDs= [];
     this.searchForGameIDs(searchTerm).subscribe(x => {
       this.gameIDs = x
       if(this.gameIDs.length > 1) {
