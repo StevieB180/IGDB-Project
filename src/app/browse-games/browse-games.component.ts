@@ -62,10 +62,18 @@ export class BrowseGamesComponent implements OnInit {
     this.games.length = 0;
 
     if(filterBy.length > 0) {
-      await this._gameService.searchGames(filterBy).subscribe(x => this.games = x);
+      await this._gameService.searchGames(filterBy).subscribe(x => {
+        this.games = x;
+        console.log('Search results:')
+        console.log(x);
+      });
     }
     else {
-      await this._gameService.getGamesFull().subscribe(x => this.games);
+      await this._gameService.getGamesFull().subscribe(x => {
+        this.games = x;
+        console.log('Search cleared')
+        console.log(x);
+      });
     }
     this.tableEnabled = true;
   }
