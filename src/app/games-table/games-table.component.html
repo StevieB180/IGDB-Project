@@ -33,6 +33,8 @@
 </div> -->
 <div *ngFor='let game of games'>
     <div>{{game.name}}</div>
-    <img *ngIf='(game.cover)' [src]="getGameCover(game)"/>
-    <img *ngIf='!(game.cover)' src='../../assets/images/no-cover.png'/>
+    <div class="imgContainer">
+        <img *ngIf='(game.cover)' [src]="getGameCover(game)"/>
+        <img *ngIf='!(game.cover)' src='../../assets/images/no-cover.png'/>
+    </div>
 </div>

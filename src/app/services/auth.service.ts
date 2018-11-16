@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { NotificationService } from '../notification.service';
+import { NotificationService } from './notification.service';
 import * as firebase from 'firebase/';
 
 @Injectable({

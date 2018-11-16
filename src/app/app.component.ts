@@ -8,7 +8,7 @@ import { IgdbService } from './services/igdb.service';
 })
 export class AppComponent implements OnInit {
   
-  constructor(private gameService: IgdbService) { }
+  constructor() { }
 
   ngOnInit() {
   }
