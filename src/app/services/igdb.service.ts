@@ -10,6 +10,10 @@ export class IgdbService {
   constructor(private _http: HttpClient) {[]
    }
 
+  getSampleGames() {
+    return this._http.get<IGame[]>('http://localhost:3000/games');
+  }
+
   getGamesFull() {
     console.log('Getting inital games');
     return this._http.get<IGame[]>('https://cors-anywhere.herokuapp.com/https://api-endpoint.igdb.com/games/?fields=*&limit=10&expand=game',
@@ -50,7 +54,7 @@ export class IgdbService {
 
   //Gets all information on a game
   getGameInfo(gameID: number) {
-    console.log('Getting game info for :' + gameID)
+    console.log('Getting game info for ' + gameID)
     return this._http.get('https://cors-anywhere.herokuapp.com/https://api-endpoint.igdb.com/games/'+gameID+'?fields=*',
     {headers: {
       "Accept":"application/json",

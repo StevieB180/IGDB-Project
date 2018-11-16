@@ -31,10 +31,30 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div> -->
-<div *ngFor='let game of games'>
-    <div>{{game.name}}</div>
+<div class="tableHeader">
+    <div class="midArea">
+        <div>Name</div>
+        <div>Developer</div>
+        <div>Publisher</div>
+        <div>Release Date</div>
+        <div>Age Rating</div>
+    </div>
+</div>
+<div class="gameRow" *ngFor='let game of games'>
     <div class="imgContainer">
-        <img *ngIf='(game.cover)' [src]="getGameCover(game)"/>
-        <img *ngIf='!(game.cover)' src='../../assets/images/no-cover.png'/>
+        <img *ngIf='(game.cover)' height="80px" [src]="getGameCover(game)"/>
+        <img *ngIf='!(game.cover)' height="80px" src='../../assets/images/no-cover.png'/>
+    </div>
+    <div class="midArea">
+        <div class="info">{{(game.name)?(game.name):('No Name')}}</div>
+        <div class="info">{{(game.developer)?(game.developer):('No Developer')}}</div>
+        <div class="info">{{(game.publisher)?(game.publisher):('No Publisher')}}</div>
+        <div class="info">{{(game.releaseDate)?(game.releaseDate|date):('No release date')}}</div>
+        <div class="info">{{(game.ageRating[0])?(game.ageRating[0].rating):('No age rating')}}</div>
+        <!-- <div class="gameSummary">{{(game.summary)?(game.summary):('No Summary')}}</div> -->
+    </div>
+    <div class="actionButtons">
+        <button (click)='openGameInfoModal(game)' class="btn btn-sm btn-success">More Info.</button>
+        <button (click)='openGameReviewModal(game)' class="btn btn-sm btn-primary">Write Review</button>
     </div>
 </div>

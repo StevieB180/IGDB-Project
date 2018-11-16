@@ -10,3 +10,54 @@
         }
     }
 }
+
+.tableHeader {
+    display: grid;
+    grid-template-columns: 100px 1fr 200px;
+    height: 60px;
+
+    .midArea {
+        grid-column: 2;
+        display: grid;
+        grid-template-columns: repeat(5,1fr);
+
+        div {
+            justify-self: left;
+            align-self: center;
+        }
+    }
+}
+.gameRow {
+    display: grid;
+    grid-template-columns: 100px 1fr 200px;
+    height: 100px;
+
+    .imgContainer {
+        justify-self: center;
+        align-self: center;
+        margin: 5px;
+    }
+    .midArea {
+        display:grid;
+        grid-template-columns: repeat(5,1fr);
+        height: 100px;
+
+        .gameName {
+            max-height: 100px;
+        }
+        .gameDev {
+            
+        }
+        .gameSummary {
+            max-height: 100px;
+            overflow: hidden;
+        }
+    }
+    .actionButtons {
+        align-self: center;
+        display: grid;
+        grid-template-columns: repeat(2,auto);
+        grid-gap: 10px;
+        margin-left: 5px;
+    }
+}
