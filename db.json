@@ -18,6 +18,7 @@
       "cover": {
         "url":"./assets/images/no-cover.png"
       },
+      "url": "http://google.ie",
       "genres": ["Action","First Person","Platformer"],
       "platforms": ["PC","Xbox 360","Playstation 3"],
       "avgRating": 90,
@@ -42,6 +43,7 @@
       "cover": {
         "url":"./assets/images/no-cover.png"
       },
+      "url": "http://google.ie",
       "genres": ["Action","First Person","Platformer"],
       "platforms": ["PC","Playstation 2","OSX","Linux"],
       "avgRating": 100,
@@ -66,6 +68,7 @@
       "cover": {
         "url":"./assets/images/no-cover.png"
       },
+      "url": "http://google.ie",
       "genres": ["Action","Adventure","First Person","Role Playing"],
       "platforms": ["PC","Xbox 360","Xbox One",
                   "Playstation 3","Playstation 4",

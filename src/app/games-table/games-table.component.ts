@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IGame } from 'src/models/game-model';
+import { IGame, ICompany } from 'src/models/game-model';
 import { MatDialog } from '@angular/material';
 import { GameInfoComponent } from '../modals/game-info/game-info.component';
 import { WriteReviewComponent } from '../modals/write-review/write-review.component';
+import { IgdbService } from '../services/igdb.service';
 
 @Component({
   selector: 'app-games-table',
@@ -13,13 +14,9 @@ export class GamesTableComponent implements OnInit {
   @Input('GamesInput') games: IGame[];
   displayedColumns: string[] = ['title','developer','publisher','releaseDate','ageRating','actionButtons'];
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, public _gameService: IgdbService) { }
 
   ngOnInit() {
-  }
-
-  getGameCover(g : IGame): string {
-    return ('http:' + g.cover.url);
   }
 
   openGameInfoModal(game: IGame): void {
@@ -33,4 +30,16 @@ export class GamesTableComponent implements OnInit {
       data: game
     })
   }
+
+  getGameCover(g : IGame): string {
+    return ('http:' + g.cover.url);
+  }
+
+  openGameInfo(g: IGame) {
+    window.open(g.url);
+  }
+  
+  // getGameDev(companyID: number): string {
+  //   return this._gameService.getGameCompanyName(companyID);
+  // }
 }

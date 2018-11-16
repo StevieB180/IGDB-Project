@@ -11,26 +11,28 @@
     }
 }
 
-.tableHeader {
-    display: grid;
-    grid-template-columns: 100px 1fr 200px;
-    height: 60px;
+// .tableHeader {
+//     display: grid;
+//     grid-template-columns: 100px 1fr 200px;
+//     height: 60px;
 
-    .midArea {
-        grid-column: 2;
-        display: grid;
-        grid-template-columns: repeat(5,1fr);
+//     .midArea {
+//         grid-column: 2;
+//         display: grid;
+//         grid-template-columns: repeat(3,1fr);
 
-        div {
-            justify-self: left;
-            align-self: center;
-        }
-    }
-}
+//         div {
+//             justify-self: left;
+//             align-self: center;
+//         }
+//     }
+// }
 .gameRow {
     display: grid;
     grid-template-columns: 100px 1fr 200px;
     height: 100px;
+    overflow-x: auto;
+    overflow-y: hidden;
 
     .imgContainer {
         justify-self: center;
@@ -39,14 +41,11 @@
     }
     .midArea {
         display:grid;
-        grid-template-columns: repeat(5,1fr);
+        grid-template-columns: repeat(3,1fr);
         height: 100px;
 
-        .gameName {
+        div {
             max-height: 100px;
-        }
-        .gameDev {
-            
         }
         .gameSummary {
             max-height: 100px;

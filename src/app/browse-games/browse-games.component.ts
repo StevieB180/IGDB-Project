@@ -13,6 +13,7 @@ export class BrowseGamesComponent implements OnInit {
   games: IGame[] = [];
   ageRatingFormat: number = 0;
   searchTerm: FormControl = new FormControl;
+  tableEnabled: boolean = false;
 
   constructor(public _gameService: IgdbService) {
     this.searchTerm.valueChanges
@@ -24,10 +25,12 @@ export class BrowseGamesComponent implements OnInit {
   async ngOnInit() {
     // await this._gameService.getGamesFull().subscribe(x => {
     //   this.games = x
+    //   console.log(x);
     //   })
     await this._gameService.getSampleGames().subscribe(x => {
       this.games = x
     })
+    this.tableEnabled = true;
   }
 
   //Adds a list of games with all data to games master
@@ -43,7 +46,8 @@ export class BrowseGamesComponent implements OnInit {
   }
 
   async searchGame(filterBy: string) {
-    this.games.length = 0;
+    this.tableEnabled = false;
+    // this.games.length = 0;
 
     if(filterBy.length > 0) {
       // await this._gameService.searchGames(filterBy).subscribe(x => {
@@ -59,5 +63,6 @@ export class BrowseGamesComponent implements OnInit {
       //   console.log(x);
       // });
     }
+    this.tableEnabled = true;
   }
 }

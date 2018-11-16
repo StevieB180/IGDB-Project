@@ -1,45 +1,10 @@
-<!-- <div class="tableContainer">
-  <table mat-table [dataSource]='games' class="mat-elevation-z8">
-      <ng-container matColumnDef="title">
-          <th mat-header-cell *matHeaderCellDef> Title </th>
-          <td mat-cell *matCellDef="let game"> {{game.name}} </td>
-      </ng-container>
-      <ng-container matColumnDef="developer">
-          <th mat-header-cell *matHeaderCellDef> Developer </th>
-          <td mat-cell *matCellDef="let game"> {{game.name}} </td>
-      </ng-container>
-      <ng-container matColumnDef="publisher">
-          <th mat-header-cell *matHeaderCellDef> Publisher </th>
-          <td mat-cell *matCellDef="let game"> {{game.name}} </td>
-      </ng-container>
-      <ng-container matColumnDef="releaseDate">
-          <th mat-header-cell *matHeaderCellDef> Release Date </th>
-          <td mat-cell *matCellDef="let game"> {{game.name}} </td>
-      </ng-container>
-      <ng-container matColumnDef="ageRating">
-          <th mat-header-cell *matHeaderCellDef> Age Rating </th>
-          <td mat-cell *matCellDef="let game"> {{game.ageRating[ageRatingFormat].type}}: {{game.ageRating[ageRatingFormat].rating}} </td>
-      </ng-container>
-      <ng-container matColumnDef="actionButtons">
-          <th mat-header-cell *matHeaderCellDef>  </th>
-          <td mat-cell *matCellDef="let game">
-              <button class="btn btn-success btn-sm" (click)='openGameInfoModal(game)'>More Info.</button>
-              <button class="btn btn-primary btn-sm" (click)='openGameReviewModal(game)'>Write Review</button>
-          </td>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-</div> -->
-<div class="tableHeader">
+<!-- <div class="tableHeader">
     <div class="midArea">
         <div>Name</div>
-        <div>Developer</div>
-        <div>Publisher</div>
         <div>Release Date</div>
-        <div>Age Rating</div>
+        <div>Summary</div>
     </div>
-</div>
+</div> -->
 <div class="gameRow" *ngFor='let game of games'>
     <div class="imgContainer">
         <img *ngIf='(game.cover)' height="80px" [src]="getGameCover(game)"/>
@@ -47,14 +12,15 @@
     </div>
     <div class="midArea">
         <div class="info">{{(game.name)?(game.name):('No Name')}}</div>
-        <div class="info">{{(game.developer)?(game.developer):('No Developer')}}</div>
-        <div class="info">{{(game.publisher)?(game.publisher):('No Publisher')}}</div>
-        <div class="info">{{(game.releaseDate)?(game.releaseDate|date):('No release date')}}</div>
-        <div class="info">{{(game.ageRating[0])?(game.ageRating[0].rating):('No age rating')}}</div>
-        <!-- <div class="gameSummary">{{(game.summary)?(game.summary):('No Summary')}}</div> -->
+        <div class="info">{{(game.release_dates)?(game.release_dates[0].human | date):('No release date')}}</div>
+        <div class="gameSummary">{{(game.summary)?(game.summary):('No Summary')}}</div>
+        <!-- <div class="info">{{(game.developers)?(getGameDev(game.developers[0])):('No Developer')}}</div>
+        <div class="info">{{(game.publishers)?(getGameDev(game.publishers[0])):('No Publisher')}}</div> -->
+        <!-- <div class="info">{{(game.ageRating[0])?(game.ageRating[0].rating):('No age rating')}}</div> -->
     </div>
     <div class="actionButtons">
-        <button (click)='openGameInfoModal(game)' class="btn btn-sm btn-success">More Info.</button>
+        <!-- <button (click)='openGameInfoModal(game)' class="btn btn-sm btn-success">More Info.</button> -->
+        <button *ngIf='game.url' (click)='openGameInfo(game)' target='_blank' class="btn btn-sm btn-success">More Info.</button>
         <button (click)='openGameReviewModal(game)' class="btn btn-sm btn-primary">Write Review</button>
     </div>
 </div>

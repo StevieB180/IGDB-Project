@@ -24,11 +24,13 @@ export interface IGame {
     summary?: string;
     themes?: number[];
     url?: string;
+    developers?: number[];
+    publishers?: number[];
 }
 
 export interface ICover {
+    url: string;
     height?: number;
-    url?: string;
     width?: number;
 }
 
@@ -55,4 +57,12 @@ export enum EESRB {
     "T",
     "M",
     "AO"
+}
+
+export interface ICompany {
+    id: number;
+    name: string;
+    slug: string;
+    url: string;
+    logo?: ICover;
 }

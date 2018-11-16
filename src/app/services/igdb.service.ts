@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
-import { IGame } from 'src/models/game-model';
+import { IGame, ICompany } from 'src/models/game-model';
 import { HttpClient } from '@angular/common/http';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IgdbService {
+  ENDPOINT: string = 'https://cors-anywhere.herokuapp.com/https://api-endpoint.igdb.com';
+  KEY: string = '79e43c586c74f14a4c13dfb52a859e26';
   constructor(private _http: HttpClient) {[]
    }
 
@@ -16,10 +18,11 @@ export class IgdbService {
 
   getGamesFull() {
     console.log('Getting inital games');
-    return this._http.get<IGame[]>('https://cors-anywhere.herokuapp.com/https://api-endpoint.igdb.com/games/?fields=*&limit=10&expand=game',
+    // return this._http.get<IGame[]>('https://cors-anywhere.herokuapp.com/https://api-endpoint.igdb.com/games/?fields=*&limit=10&expand=game',
+    return this._http.get<IGame[]>(this.ENDPOINT + '/games/?fields=*&limit=10&expand=game,game.developers,game.publishers,game.genres&filter[release_dates.date][lt]=1999-12-31',
     {headers: {
       "Accept":"application/json",
-      "user-key":"43264b7755b2a0ed6f2f76f4374c6604"
+      "user-key":this.KEY
     }})
   }
 
@@ -45,20 +48,20 @@ export class IgdbService {
 
   //Gets IDs of games based on search term
   searchForGameIDs(searchTerm:string) {
-    return this._http.get<IGame[]>('https://cors-anywhere.herokuapp.com/https://api-endpoint.igdb.com/games/?search='+ searchTerm + '?fields=*&limit=10',
+    return this._http.get<IGame[]>(this.ENDPOINT + '/games/?search='+ searchTerm + '?fields=*&limit=10',
     {headers: {
       "Accept":"application/json",
-      "user-key":"43264b7755b2a0ed6f2f76f4374c6604"
+      "user-key":this.KEY
     }})
   }
 
   //Gets all information on a game
   getGameInfo(gameID: number) {
     console.log('Getting game info for ' + gameID)
-    return this._http.get('https://cors-anywhere.herokuapp.com/https://api-endpoint.igdb.com/games/'+gameID+'?fields=*',
+    return this._http.get(this.ENDPOINT + '/games/'+ gameID +'?fields=*&game.developers,game.publishers,game.genres',
     {headers: {
       "Accept":"application/json",
-      "user-key":"43264b7755b2a0ed6f2f76f4374c6604",
+      "user-key":this.KEY,
       "X-Requested-With":"origin"
     }})
   }
