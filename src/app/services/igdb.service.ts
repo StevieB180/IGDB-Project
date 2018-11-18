@@ -54,7 +54,7 @@ export class IgdbService {
       "user-key":this.KEY
     }})
   }
-
+  
   //Gets all information on a game
   getGameInfo(gameID: number) {
     console.log('Getting game info for ' + gameID)
