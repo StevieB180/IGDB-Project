@@ -1,3 +1,6 @@
+
+<img src={{imageString}}/>
+
 <!--<div class="modalContainer">
   <div>{{data.title}}</div>
   <div>{{data.developer}}</div>
@@ -14,7 +17,7 @@
   <div>{{data.description}}</div>
 </div>
 -->
-
+<!-- 
 <div class='card'
      *ngIf='data'>
   <div class='card-header'>
@@ -24,8 +27,8 @@
 
   <div class='card-body'>
     <div class='row'>
-      <div class='col-md-8'>
-        <div class='row'>
+      <div class='col-md-8'> -->
+        <!-- <div class='row'>
           <div class='col-md-4'>Developer:</div>
           <div class='col-md-8'>{{data.developer}}</div>
         </div>
@@ -40,9 +43,9 @@
         <div class='row'>
           <div class='col-md-4'>Average Rating:</div>
           <div class='col-md-8'>{{data.avgRating}}</div>
-        </div> <!-- <pm-star [rating]='product.starRating'>
+        </div>  <pm-star [rating]='product.starRating'> 
         </pm-star>-->
-        <div class='row'>
+        <!-- <div class='row'>
           <div class='col-md-4'>Genre:</div>
           <div class='col-md-8'>
             <div *ngFor='let genre of data.genres'>
@@ -52,10 +55,10 @@
         </div>
         <div class='row'>
             <div class='col-md-4'>Platform:</div>
-         <!-- <div class='col-md-8'>
+         <div class='col-md-8'>
             <div *ngFor='let platform of data.platforms'>
               {{platform}}
-            </div>-->
+            </div>
         </div>
         </div>
         <div class='row'>
@@ -63,24 +66,7 @@
           <div class='col-md-8'>{{data.summary}}</div>
         </div>
         <button class="btn btn-primary" data-dismiss="closeGameInfoModal()">Close</button>
-        <!--<button class="btn btn-primary" (click)='closeGameInfoModal()'>Close</button>-->
+        <button class="btn btn-primary" (click)='closeGameInfoModal()'>Close</button>
       </div>
 
-      <div class='col-md-4'>
-        <img class='center-block img-responsive'
-             [style.width.px]='50'
-             [style.margin.px]='2'
-             [src]=''
-             [title]='data.name'>
-      </div>
-    </div>
-  </div>
-<!--
-  <div class='card-footer'>'data.cover.url'
-    <button class='btn btn-outline-secondary'
-            (click)='onBack()'
-            style='width:80px'>
-      <i class='fa fa-chevron-left'></i> Back
-    </button>
-  </div>
-</div>-->
+      <div class='col-md-4' *ngIf='data'> -->
