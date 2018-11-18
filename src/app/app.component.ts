@@ -8,14 +8,8 @@ import { IgdbService } from './services/igdb.service';
 })
 export class AppComponent implements OnInit {
   
-  constructor(private gameService: IgdbService) { }
+  constructor() { }
 
-  //Console desplay the Jsons
   ngOnInit() {
-    this.gameService.getGames().subscribe(element => {
-      console.log(element)
-    });
   }
-
-  
 }

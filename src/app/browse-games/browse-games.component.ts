@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IgdbService } from '../services/igdb.service';
-import { IGame, EESRB, EPEGI } from 'src/models/game-model';
+import { IGame } from 'src/models/game-model';
 import {FormControl} from '@angular/forms';
-import { MatDialog } from '@angular/material';
-import { GameInfoComponent } from '../modals/game-info/game-info.component';
-import { WriteReviewComponent } from '../modals/write-review/write-review.component';
 import { debounceTime, distinctUntilChanged } from "rxjs/operators"
 
 @Component({
@@ -13,29 +10,32 @@ import { debounceTime, distinctUntilChanged } from "rxjs/operators"
   styleUrls: ['./browse-games.component.scss']
 })
 export class BrowseGamesComponent implements OnInit {
-  
-  displayedColumns: string[] = ['title','developer','publisher','releaseDate','ageRating','actionButtons'];
-  gamesMaster: IGame[];
-  games: IGame[];
-  ageRatingFormat: number;
+  games: IGame[] = [];
+  ageRatingFormat: number = 0;
   searchTerm: FormControl = new FormControl;
+  tableEnabled: boolean = false;
 
-  constructor(public _gameService: IgdbService, public dialog: MatDialog) {
+  constructor(public _gameService: IgdbService) {
     this.searchTerm.valueChanges
     .pipe(debounceTime(1000))
     .pipe(distinctUntilChanged())
-    .subscribe(searchTerm =>
-      this.games = this.searchGame(searchTerm)
-    )
+    .subscribe(searchTerm => this.searchGame(searchTerm))
   }
 
-  ngOnInit() {
-    this.ageRatingFormat = 0;
+  async ngOnInit() {
+    // await this._gameService.getGamesFull().subscribe(x => {
+    //   this.games = x
+    //   console.log(x);
+    //   })
+    await this._gameService.getSampleGames().subscribe(x => {
+      this.games = x
+    })
+    this.tableEnabled = true;
+  }
 
-    this._gameService.getGames().subscribe(data =>
-      this.gamesMaster = data);
-    this._gameService.getGames().subscribe(data =>
-      this.games = data);
+  //Adds a list of games with all data to games master
+  testButton() {
+    console.log(this.games);
   }
 
   changeAgeRating(): void {
@@ -45,33 +45,24 @@ export class BrowseGamesComponent implements OnInit {
     { this.ageRatingFormat = 0}
   }
 
-  openGameInfoModal(game: IGame): void {
-    const dialogRef = this.dialog.open(GameInfoComponent, {
-      data: game
-    })
-  }
-  closeGameInfoModal(game: IGame): void {
-    const dialogRef = this.dialog.closeAll()
-  }
+  async searchGame(filterBy: string) {
+    this.tableEnabled = false;
+    // this.games.length = 0;
 
-  openGameReviewModal(game: IGame): void{
-    const dialogRef = this.dialog.open(WriteReviewComponent, {
-      data: game
-    })
-  }
-
-  searchGame(filterBy: string): IGame[] {
-    if (filterBy.length > 0) {
-      filterBy = filterBy.toLocaleLowerCase();
-      let filterResults = this.gamesMaster.filter((g: IGame) => 
-        g.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
-
-      console.table(filterResults);
-      return filterResults;
+    if(filterBy.length > 0) {
+      // await this._gameService.searchGames(filterBy).subscribe(x => {
+      //   this.games = x;
+      //   console.log('Search results:')
+      //   console.log(x);
+      // });
     }
     else {
-      console.table(this.gamesMaster);
-      return this.gamesMaster;
+      // await this._gameService.getGamesFull().subscribe(x => {
+      //   this.games = x;
+      //   console.log('Search cleared')
+      //   console.log(x);
+      // });
     }
+    this.tableEnabled = true;
   }
 }

@@ -1,7 +1,7 @@
 { "games": [
     {
-      "gameID": "GM1",
-      "title": "Mirrors Edge",
+      "id": "1",
+      "name": "Mirrors Edge",
       "developer": "DICE",
       "publisher": "EA",
       "releaseDate": "2008-10-19T00:00:00",
@@ -15,14 +15,18 @@
           "rating": "M"
         }
       ],
+      "cover": {
+        "url":"./assets/images/no-cover.png"
+      },
+      "url": "http://google.ie",
       "genres": ["Action","First Person","Platformer"],
       "platforms": ["PC","Xbox 360","Playstation 3"],
       "avgRating": 90,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non eros viverra, fringilla massa rhoncus, dictum nulla. In rhoncus nunc sed ante maximus tincidunt. Praesent ut lectus nisl. Etiam elementum dictum elit at aliquet. Sed vitae vehicula massa, sed luctus velit. Morbi aliquam sodales tempor. Praesent tempus, felis et luctus porttitor, quam lectus elementum nulla, sit amet pretium nisi dolor vel eros. Nulla vestibulum eu velit ac semper. Morbi gravida rhoncus libero, a rhoncus sapien. Morbi non sem a ligula viverra fermentum elementum ac odio. Fusce eget justo eros."
     },
     {
-      "gameID": "GM2",
-      "title": "Half Life",
+      "id": "2",
+      "name": "Half Life",
       "developer": "Valve",
       "publisher": "Sierra",
       "releaseDate": "1999-08-12T00:00:00",
@@ -36,14 +40,18 @@
           "rating": "M"
         }
       ],
+      "cover": {
+        "url":"./assets/images/no-cover.png"
+      },
+      "url": "http://google.ie",
       "genres": ["Action","First Person","Platformer"],
       "platforms": ["PC","Playstation 2","OSX","Linux"],
       "avgRating": 100,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non eros viverra, fringilla massa rhoncus, dictum nulla. In rhoncus nunc sed ante maximus tincidunt. Praesent ut lectus nisl. Etiam elementum dictum elit at aliquet. Sed vitae vehicula massa, sed luctus velit. Morbi aliquam sodales tempor. Praesent tempus, felis et luctus porttitor, quam lectus elementum nulla, sit amet pretium nisi dolor vel eros. Nulla vestibulum eu velit ac semper. Morbi gravida rhoncus libero, a rhoncus sapien. Morbi non sem a ligula viverra fermentum elementum ac odio. Fusce eget justo eros."
     },
     {
-      "gameID": "GM3",
-      "title": "The Elder Scrolls V: Skyrim",
+      "id": "3",
+      "name": "The Elder Scrolls V: Skyrim",
       "developer": "Bethesda",
       "publisher": "Zenimax",
       "releaseDate": "2011-11-11T00:00:00",
@@ -57,6 +65,10 @@
           "rating": "M"
         }
       ],
+      "cover": {
+        "url":"./assets/images/no-cover.png"
+      },
+      "url": "http://google.ie",
       "genres": ["Action","Adventure","First Person","Role Playing"],
       "platforms": ["PC","Xbox 360","Xbox One",
                   "Playstation 3","Playstation 4",

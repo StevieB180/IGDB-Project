@@ -9,7 +9,6 @@ import { BrowseGamesComponent } from '../../browse-games/browse-games.component'
   styleUrls: ['./game-info.component.scss']
 })
 export class GameInfoComponent implements OnInit {
-
   gameObject: IGame;
   imageString: string;
   constructor(
@@ -26,4 +25,11 @@ export class GameInfoComponent implements OnInit {
   ngOnInit() {
     this.imageString = 'http:'+ this.gameObject.cover.url
   }
+
+  
+  onBack(): void {
+  
+   this.dialogRef.close();
+  }
+  
 }

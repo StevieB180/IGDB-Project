@@ -1,0 +1,26 @@
+<!-- <div class="tableHeader">
+    <div class="midArea">
+        <div>Name</div>
+        <div>Release Date</div>
+        <div>Summary</div>
+    </div>
+</div> -->
+<div class="gameRow" *ngFor='let game of games'>
+    <div class="imgContainer">
+        <img *ngIf='(game.cover)' height="80px" [src]="getGameCover(game)"/>
+        <img *ngIf='!(game.cover)' height="80px" src='../../assets/images/no-cover.png'/>
+    </div>
+    <div class="midArea">
+        <div class="info">{{(game.name)?(game.name):('No Name')}}</div>
+        <div class="info">{{(game.release_dates)?(game.release_dates[0].human | date):('No release date')}}</div>
+        <div class="gameSummary">{{(game.summary)?(game.summary):('No Summary')}}</div>
+        <!-- <div class="info">{{(game.developers)?(getGameDev(game.developers[0])):('No Developer')}}</div>
+        <div class="info">{{(game.publishers)?(getGameDev(game.publishers[0])):('No Publisher')}}</div> -->
+        <!-- <div class="info">{{(game.ageRating[0])?(game.ageRating[0].rating):('No age rating')}}</div> -->
+    </div>
+    <div class="actionButtons">
+        <!-- <button (click)='openGameInfoModal(game)' class="btn btn-sm btn-success">More Info.</button> -->
+        <button *ngIf='game.url' (click)='openGameInfo(game)' target='_blank' class="btn btn-sm btn-success">More Info.</button>
+        <button (click)='openGameReviewModal(game)' class="btn btn-sm btn-primary">Write Review</button>
+    </div>
+</div>

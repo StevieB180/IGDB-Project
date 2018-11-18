@@ -1,39 +1,68 @@
 import { Injectable } from '@angular/core';
-import { IGame } from 'src/models/game-model';
-import { Observable } from 'rxjs';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { IGame, ICompany } from 'src/models/game-model';
+import { HttpClient } from '@angular/common/http';
+import { of, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IgdbService {
-/*
-<<<<<<< HEAD
- 
-    let headers = new HttpHeaders()
-    headers = headers.set('user-key','43264b7755b2a0ed6f2f76f4374c6604')
-    headers = headers.set('X-Requested-With', 'IDGBProject')
-    return this.http.get(this.ROOT_URL  + '/games/', {headers: headers})
- 
- 
-  
-=======*/
-  constructor(private _http: HttpClient) {
-/*>>>>>>> 014d02052f0a7cc44a0fc90180369e4e6c522f7f*/
-  }
-  //Returns a list of sample games
-  getSampleGames(): Observable<IGame[]> {
+  ENDPOINT: string = 'https://cors-anywhere.herokuapp.com/https://api-endpoint.igdb.com';
+  KEY: string = '79e43c586c74f14a4c13dfb52a859e26';
+  constructor(private _http: HttpClient) {[]
+   }
+
+  getSampleGames() {
     return this._http.get<IGame[]>('http://localhost:3000/games');
   }
 
-  //Returns a list of games from the IGDB API
-  getGames(): Observable<IGame[]> {
-    let headers = new HttpHeaders();
-
-    return this._http.get<IGame[]>('https://cors-anywhere.herokuapp.com/https://api-endpoint.igdb.com/games/?fields=*&limit=10',
+  getGamesFull() {
+    console.log('Getting inital games');
+    // return this._http.get<IGame[]>('https://cors-anywhere.herokuapp.com/https://api-endpoint.igdb.com/games/?fields=*&limit=10&expand=game',
+    return this._http.get<IGame[]>(this.ENDPOINT + '/games/?fields=*&limit=10&expand=game,game.developers,game.publishers,game.genres&filter[release_dates.date][lt]=1999-12-31',
     {headers: {
       "Accept":"application/json",
-      "user-key":"43264b7755b2a0ed6f2f76f4374c6604"
+      "user-key":this.KEY
+    }})
+  }
+
+
+  //Searching Stuff \/
+  searchGames(searchTerm:string) {
+    let gameIDs: IGame[]= [];
+    let gamesList: IGame[] = [];
+    this.searchForGameIDs(searchTerm).subscribe(x => {
+      gameIDs = x
+      if(gameIDs.length > 1) {
+        console.log('Getting individual game information for all games')
+        gameIDs.forEach(async g =>
+          await this.getGameInfo(g.id).toPromise().then(x => gamesList.push(x[0])))
+      }
+      else {
+        console.log('No game IDs');
+      }})
+
+    console.log(gamesList);
+    return of(gamesList);
+  }
+
+  //Gets IDs of games based on search term
+  searchForGameIDs(searchTerm:string) {
+    return this._http.get<IGame[]>(this.ENDPOINT + '/games/?search='+ searchTerm + '?fields=*&limit=10',
+    {headers: {
+      "Accept":"application/json",
+      "user-key":this.KEY
+    }})
+  }
+
+  //Gets all information on a game
+  getGameInfo(gameID: number) {
+    console.log('Getting game info for ' + gameID)
+    return this._http.get(this.ENDPOINT + '/games/'+ gameID +'?fields=*&game.developers,game.publishers,game.genres',
+    {headers: {
+      "Accept":"application/json",
+      "user-key":this.KEY,
+      "X-Requested-With":"origin"
     }})
   }
 }
