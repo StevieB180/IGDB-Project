@@ -64,6 +64,6 @@ export class IgdbService {
       "Accept":"application/json",
       "user-key":this.KEY,
       "X-Requested-With":"origin"
-    }})
+    }}) 
   }
-}
+}     
