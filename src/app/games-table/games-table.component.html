@@ -11,7 +11,10 @@
         <img *ngIf='!(game.cover)' height="80px" src='../../assets/images/no-cover.png'/>
     </div>
     <div class="midArea">
-        <div class="info">{{(game.name)?(game.name):('No Name')}}</div>
+      <!--  <div class="info">{{(game.name)?(game.name):('No Name')}}</div>-->
+        <div class="info">{{game.id}}</div>
+
+      
         <div class="info">{{(game.release_dates)?(game.release_dates[0].human | date):('No release date')}}</div>
         <div class="gameSummary">{{(game.summary)?(game.summary):('No Summary')}}</div>
         <!-- <div class="info">{{(game.developers)?(getGameDev(game.developers[0])):('No Developer')}}</div>

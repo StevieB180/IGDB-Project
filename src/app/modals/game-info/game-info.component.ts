@@ -18,6 +18,7 @@ export class GameInfoComponent implements OnInit {
     this.gameObject = data
      }
 
+     
   onNoClick(): void {
     this.dialogRef.close();
   }

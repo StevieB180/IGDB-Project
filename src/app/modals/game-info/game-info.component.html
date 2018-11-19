@@ -41,7 +41,7 @@
            </div>
            <div class='row'>
               <div class='col-md-4'>Publisher:</div>
-              <div class='col-md-8'>{{data.publisher}}</div>
+              <div class='col-md-8'>{{data.release_dates}}</div>
            </div>
            <div class='row'>
               <div class='col-md-4'>{{data.ageRating[0].type}}:</div>
@@ -49,7 +49,7 @@
            </div>
            <div class='row'>
               <div class='col-md-4'>Average Rating:</div>
-              <div class='col-md-8'>{{data.avgRating}}</div>
+              <div class='col-md-8'>{{gameObject.rating}}</div>
            </div> <!-- <pm-star [rating]='product.starRating'>
             </pm-star>-->
            <div class='row'>
@@ -81,7 +81,7 @@
             src={{imageString}}
             [title]='data.productName'>
 
-       
+        
                 [style.width.px]='200'
                 [style.margin.px]='2'
                // [src]='product.imageUrl'

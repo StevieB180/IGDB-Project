@@ -16,10 +16,11 @@ export class IgdbService {
     return this._http.get<IGame[]>('http://localhost:3000/games');
   }
 
-  getGamesFull() {
+  getGamesFull(type: string) {
     console.log('Getting inital games');
     // return this._http.get<IGame[]>('https://cors-anywhere.herokuapp.com/https://api-endpoint.igdb.com/games/?fields=*&limit=10&expand=game',
-    return this._http.get<IGame[]>(this.ENDPOINT + '/games/?fields=*&limit=10&expand=game,game.developers,game.publishers,game.genres&filter[release_dates.date][lt]=1999-12-31',
+   //MK// return this._http.get<IGame[]>(this.ENDPOINT + '/games/?fields=*&limit=10&expand=game,game.developers,game.publishers,game.genres&filter[release_dates.date][lt]=1999-12-31',
+    return this._http.get<IGame[]>(this.ENDPOINT + `/${type}/?fields=*&limit=10&order=popularity:desc`,
     {headers: {
       "Accept":"application/json",
       "user-key":this.KEY

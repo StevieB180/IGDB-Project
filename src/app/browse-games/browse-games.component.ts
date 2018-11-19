@@ -11,6 +11,7 @@ import { debounceTime, distinctUntilChanged } from "rxjs/operators"
 })
 export class BrowseGamesComponent implements OnInit {
   games: IGame[] = [];
+  gamesF: IGame[] = [];
   ageRatingFormat: number = 0;
   searchTerm: FormControl = new FormControl;
   tableEnabled: boolean = false;
@@ -23,13 +24,18 @@ export class BrowseGamesComponent implements OnInit {
   }
 
   async ngOnInit() {
-    // await this._gameService.getGamesFull().subscribe(x => {
-    //   this.games = x
-    //   console.log(x);
-    //   })
-    await this._gameService.getSampleGames().subscribe(x => {
-      this.games = x
-    })
+     await this._gameService.getGamesFull('games').subscribe(x => {
+       this.games = x
+       console.log(x);
+       })
+       await this._gameService.getGamesFull('franchises').subscribe(x => {
+        this.gamesF = x
+        console.log(x);
+        })
+
+   // await this._gameService.getSampleGames().subscribe(x => {
+     // this.games = x
+    //})
     this.tableEnabled = true;
   }
 
