@@ -26,7 +26,7 @@ export class IgdbService {
     {headers: {
       "Accept":"application/json",
       "user-key":this.KEY
-    }})
+    }}) 
   }
 
 
