@@ -11,7 +11,7 @@
         </div>
     </div>
     <!-- Actual games list -->
-    <div *ngIf='tableEnabled'>
+    <div class="tableContainer" *ngIf='tableEnabled'>
         <app-games-table [GamesInput]='games'></app-games-table>
     </div>
 </div>
