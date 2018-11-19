@@ -4,11 +4,23 @@
         <img *ngIf='!(game.cover)' height="100px" src='../../assets/images/no-cover.png'/>
     </div>
     <div class="midArea">
+<<<<<<< HEAD
+      <!--  <div class="info">{{(game.name)?(game.name):('No Name')}}</div>-->
+        <div class="info">{{game.rating}}</div>
+
+      
+        <div class="info">{{(game.release_dates)?(game.release_dates[0].human | date):('No release date')}}</div>
+        <div class="gameSummary">{{(game.summary)?(game.summary):('No Summary')}}</div>
+        <!-- <div class="info">{{(game.developers)?(getGameDev(game.developers[0])):('No Developer')}}</div>
+        <div class="info">{{(game.publishers)?(getGameDev(game.publishers[0])):('No Publisher')}}</div> -->
+        <!-- <div class="info">{{(game.ageRating[0])?(game.ageRating[0].rating):('No age rating')}}</div> -->
+=======
         <div class="headerRow">
             <div class="title">{{(game.name)?(game.name):('No Name')}}</div>
             <div class="releaseDate">{{(game.release_dates)?(game.release_dates[0].human | date):('No release date')}}</div>
         </div>
         <div class="summary">{{(game.summary)?(game.summary):('No Summary')}}</div>
+>>>>>>> 69d1ec2a8fbfc193ba64e7e53b481b4f4e127e07
     </div>
     <div class="actionButtons">
         <button *ngIf='game.url' (click)='openGameInfo(game)' target='_blank' class="btn btn-sm btn-success">More Info.</button>

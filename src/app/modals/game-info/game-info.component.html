@@ -35,21 +35,21 @@
      <div class='card-body'>
        <div class='row'>
          <div class='col-md-8'>
-           <div class='row'>
+           <!-- <div class='row'>
               <div class='col-md-4'>Developer:</div>
               <div class='col-md-8'>{{data.developer}}</div>
-           </div>
+           </div> -->
            <div class='row'>
               <div class='col-md-4'>Publisher:</div>
               <div class='col-md-8'>{{data.release_dates}}</div>
            </div>
-           <div class='row'>
+           <!-- <div class='row'>
               <div class='col-md-4'>{{data.ageRating[0].type}}:</div>
               <div class='col-md-8'>{{data.ageRating[0].rating}}</div>
-           </div>
+           </div> -->
            <div class='row'>
               <div class='col-md-4'>Average Rating:</div>
-              <div class='col-md-8'>{{gameObject.rating}}</div>
+              <div class='col-md-8'>{{data.rating}}</div>
            </div> <!-- <pm-star [rating]='product.starRating'>
             </pm-star>-->
            <div class='row'>
@@ -60,13 +60,13 @@
                 </div>
               </div>
            </div>
-           <div class='row'>
+           <!-- <div class='row'>
               <div class='col-md-4'>Platform:</div>
               <div class='col-md-8'>
                <div *ngFor='let platform of data.platforms'>
                    {{platform}}</div>
               </div>
-           </div>
+           </div> -->
 
            <div class='row'>
               <div class='col-md-4'>Description:</div>
@@ -74,7 +74,7 @@
            </div>
          </div>
    
-         <div class='col-md-4'>
+         <!-- <div class='col-md-4'>
             <img class='center-block img-responsive'
             [style.width.px]='200'
             [style.margin.px]='2' 
@@ -87,7 +87,7 @@
                // [src]='product.imageUrl'
                 >
                 
-         </div>
+         </div> -->
        </div>
      </div>
    
