@@ -27,6 +27,7 @@ export class GamesTableComponent implements OnInit {
 
   openGameReviewModal(game: IGame): void{
     const dialogRef = this.dialog.open(WriteReviewComponent, {
+      // width: '600px',
       data: game
     })
   }
