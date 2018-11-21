@@ -34,7 +34,7 @@ export class BrowseGamesComponent implements OnInit {
      this.games = x;
     })
     this.tableEnabled = true;
-  }
+  } 
 
   //Adds a list of games with all data to games master
   testButton() {
