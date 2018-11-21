@@ -1,13 +1,27 @@
 <div class="modalContainer">
+<<<<<<< HEAD
   <div>{{data.id}}</div>
   <form>
     <div class="form-group">
       <label for="reviewRating">Rating:</label>
       <input name="reviewRating" type="number">
+=======
+  <div class="header">Reviewing {{data.name}}</div>
+  <div class="splitter">
+    <form>
+      <div class="form-group">
+        <label for="reviewRating">Rating:</label>
+        <input class="form-control" name="reviewRating" type="number" min="0" max="10">
+      </div>
+      <div class="form-group">
+        <label for="reviewText">Review</label>
+        <textarea class="form-control" name="reviewText"></textarea>
+      </div>
+    </form>
+    <div class="imgContainer">
+        <img *ngIf='(data.cover)' height="100px" [src]="getGameCover(data)"/>
+        <img *ngIf='!(data.cover)' height="100px" src='../../../assets/images/no-cover.png'/>
+>>>>>>> fefb3a5cf36f67010d2876a8ee8e8650231190d2
     </div>
-    <div class="form-group">
-      <label for="reviewText">Review</label>
-      <textarea name="reviewText"></textarea>
-    </div>
-  </form>
+  </div>
 </div>

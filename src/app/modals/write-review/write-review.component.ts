@@ -17,4 +17,7 @@ export class WriteReviewComponent{
     this.dialogRef.close();
   }
 
+  getGameCover(g : IGame): string {
+    return ('http:' + g.cover.url);
+  }
 }
