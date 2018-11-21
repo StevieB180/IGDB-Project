@@ -30,7 +30,21 @@ export class IgdbService {
     }}) 
   }
 
-
+  getGamesFull2() {
+      return this._http.get<IGame[]>(this.ENDPOINT + '/companies/263',
+    {headers: {
+      "Accept":"application/json",
+      "user-key":this.KEY
+    }}) 
+  }
+ 
+  getDev(type: number) {
+      return this._http.get<ICompany>(this.ENDPOINT + `/companies/${type}`,
+    {headers: {
+      "Accept":"application/json",
+      "user-key":this.KEY
+    }})  
+  } 
   //Searching Stuff \/
   searchGames(searchTerm:string) {
     // let gameIDs: IGame[]= [];

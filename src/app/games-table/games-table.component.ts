@@ -12,6 +12,7 @@ import { IgdbService } from '../services/igdb.service';
 })
 export class GamesTableComponent implements OnInit {
   @Input('GamesInput') games: IGame[];
+ 
   displayedColumns: string[] = ['title','developer','publisher','releaseDate','ageRating','actionButtons'];
 
   constructor(public dialog: MatDialog, public _gameService: IgdbService) { }
@@ -34,7 +35,9 @@ export class GamesTableComponent implements OnInit {
   getGameCover(g : IGame): string {
     return ('http:' + g.cover.url);
   }
-
+  // dev(g : IGame): string {
+  //   return (g.developers.toString());
+  // }
   //openGameInfo(g: IGame) {
     //window.open(g.url);
   //}

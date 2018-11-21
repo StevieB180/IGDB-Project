@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IgdbService } from '../services/igdb.service';
-import { IGame } from 'src/models/game-model';
+import { IGame, ICompany } from 'src/models/game-model';
 import {FormControl} from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from "rxjs/operators"
 
@@ -11,7 +11,7 @@ import { debounceTime, distinctUntilChanged } from "rxjs/operators"
 })
 export class BrowseGamesComponent implements OnInit {
   games: IGame[] = [];
-  gamesF: IGame[] = [];
+  gamesF: ICompany;
   ageRatingFormat: number = 0;
   searchTerm: FormControl = new FormControl;
   tableEnabled: boolean = false;
@@ -22,20 +22,16 @@ export class BrowseGamesComponent implements OnInit {
     .pipe(distinctUntilChanged())
     .subscribe(searchTerm => this.searchGame(searchTerm))
   }
-
+ 
   async ngOnInit() {
-    //  await this._gameService.getGamesFull('games').subscribe(x => {
-    //    this.games = x
-    //    console.log(x);
-    //    })
-    //    await this._gameService.getGamesFull('franchises').subscribe(x => {
-    //     this.gamesF = x
-    //     console.log(x);
-    //     })
+      await this._gameService.getGamesFull('games').subscribe(x => {
+        this.games = x
+        console.log(x);
+        })
+       
 
    await this._gameService.getSampleGames().subscribe(x => {
      this.games = x;
-     this.gamesF = x;
     })
     this.tableEnabled = true;
   }

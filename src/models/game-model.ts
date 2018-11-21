@@ -24,7 +24,7 @@ export interface IGame {
     summary?: string;
     themes?: number[];
     url?: string;
-    developers?: string;
+    developers?: number;
     publishers?: number[];
     release_dates?: string;
     rating?: string; 
