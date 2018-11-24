@@ -57,7 +57,7 @@ addReview(review: IReview): void{
       review => {
         this.allReview = review;
         for(let review of this.allReview){
-          console.log("Adding: " + review.rating);
+          console.log("Adding: " + review.gameID);
           this.reviewCollection.add(review);
         }
 

@@ -11,24 +11,21 @@ import { IReview } from 'src/models/user-review.model';
   providers: [FirestoreService]
 })
 export class WriteReviewComponent{
-
   constructor( private _reviewService: FirestoreService,
     public dialogRef: MatDialogRef<WriteReviewComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IGame) { }
-   
     // reviewID: string;
-    // gameID: number;
+    gameID: number;
     rating: string;
     description: string;
-
     addReview(): void{
     // console.log("reviewID =" + this.reviewID);
-    // console.log("gameID =" + this.gameID);
+    console.log("gameID =" + this.data.id);
     console.log("rating =" + this.rating);
     console.log("description =" + this.description);
     let review: IReview = {
     // reviewID : this.reviewID,
-    // gameID : this.gameID,
+    gameID : this.data.id,
     rating : this.rating,
     description : this.description
     };
