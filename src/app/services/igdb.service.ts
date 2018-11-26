@@ -39,11 +39,11 @@ export class IgdbService {
   }
  
   getDev(type: number) {
-      return this._http.get<ICompany>(this.ENDPOINT + `/companies/${type}`,
+      return this._http.get(this.ENDPOINT + `/companies/${type}`,
     {headers: {
       "Accept":"application/json",
       "user-key":this.KEY
-    }})  
+    }});
   } 
   //Searching Stuff \/
   searchGames(searchTerm:string) {
