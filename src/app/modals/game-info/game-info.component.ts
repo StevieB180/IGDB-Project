@@ -11,27 +11,46 @@ import { Observable } from 'rxjs';
   styleUrls: ['./game-info.component.scss']
 })
 export class GameInfoComponent implements OnInit {
+  gameObject: IGame;
   imageString: string;
-  devName: string;
+  dev: ICompany;
+  comp : number;
+  deve: Observable<ICompany>
+  cos:string;
 
-  constructor(public dialogRef: MatDialogRef<GameInfoComponent>,private _gameService: IgdbService, @Inject(MAT_DIALOG_DATA) public data: IGame) { }
+
+
+
+  constructor(
+    public dialogRef: MatDialogRef<GameInfoComponent>,private _gameService: IgdbService,
+    @Inject(MAT_DIALOG_DATA) public data: IGame) {
+      console.log("GIC: data.cover.url = "+data.cover.url)
+      console.log("GIC: data.DEVELOPER = "+data.developers)
+      console.log("GIC: data = "+JSON.stringify(data))
+      this.gameObject = data
+     }
+
+     onDev(type:number): string {
+     this.comp = this.gameObject.developers;
+
+   this._gameService.getDev(type).subscribe(x => {
+    this.dev = x
+    console.log(x);
+    }) 
+
+       
+
+     console.log('in' + this.dev);
+     return "name"
+      
+   } 
      
-  getDev(devID:number){
-    this._gameService.getDev(devID).subscribe(x => {
-    this.devName = x[0].name;
-    console.log(x)
-    });
-  } 
-   
   onNoClick(): void {
     this.dialogRef.close();
   }
 
   ngOnInit() {
-    this.imageString = 'http:'+ this.data.cover.url;
-    
-    if(this.data.developers != null)
-    { this.getDev(this.data.developers[0]); }
+    this.imageString = 'http:'+ this.gameObject.cover.url
   }
 
   

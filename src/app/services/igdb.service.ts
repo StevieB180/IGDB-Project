@@ -8,7 +8,7 @@ import { of, Observable } from 'rxjs';
 })
 export class IgdbService {
   ENDPOINT: string = 'https://cors-anywhere.herokuapp.com/https://api-endpoint.igdb.com';
-  KEY: string = '79e43c586c74f14a4c13dfb52a859e26';
+  KEY: string = '43264b7755b2a0ed6f2f76f4374c6604';
   constructor(private _http: HttpClient) {[]
    }
 
@@ -39,11 +39,11 @@ export class IgdbService {
   }
  
   getDev(type: number) {
-      return this._http.get(this.ENDPOINT + `/companies/${type}`,
+      return this._http.get<ICompany>(this.ENDPOINT + `/companies/${type}`,
     {headers: {
       "Accept":"application/json",
       "user-key":this.KEY
-    }});
+    }})  
   } 
   //Searching Stuff \/
   searchGames(searchTerm:string) {
