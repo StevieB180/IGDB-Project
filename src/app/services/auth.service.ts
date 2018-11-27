@@ -89,4 +89,36 @@ export class AuthService {
   isLoggedIn():boolean {
       return this.loggedInStatus;
   }
+
+  //log in a user with a pop up window 
+//user uses there facebook email and password tho do this
+doFacebookLogin(){
+  return new Promise<any>((resolve, reject) => {
+    let provider = new firebase.auth.FacebookAuthProvider();
+    this._firebaseAuth.auth
+    .signInWithPopup(provider)
+    .then(res => {
+      resolve(res);
+      this.loggedInStatus = true;
+    }, err => {
+      console.log(err);
+      reject(err);
+    })
+  })
+}
+//log in a user with a pop up window 
+//user uses there gmail email and password tho do this
+doGoogleLogin(){
+return new Promise<any>((resolve, reject) => {
+  let provider = new firebase.auth.GoogleAuthProvider();
+  provider.addScope('profile');
+  provider.addScope('email');
+  this._firebaseAuth.auth
+  .signInWithPopup(provider)
+  .then(res => {
+    resolve(res);
+    this.loggedInStatus = true;
+  })
+})
+}
 }

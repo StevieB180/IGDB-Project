@@ -14,6 +14,13 @@ import { MatDialogModule,
   MatProgressSpinnerModule,
   MatTableModule } from '@angular/material';
 
+import { FontAwesomeModule } from'@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons'
+
+library.add(faGoogle);
+library.add(faFacebook);
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowseGamesComponent } from './browse-games/browse-games.component';
@@ -76,7 +83,8 @@ import { GamesTableComponent } from './games-table/games-table.component';
     MatInputModule,
     MatProgressSpinnerModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    FontAwesomeModule
   ],
 
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, IgdbService],

@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ]
 
-//Will imploment auth when application near finshed 
+// Will imploment auth when application near finshed 
 // const routes: Routes = [
 //   {path: '', redirectTo:'register', pathMatch: 'full', canActivate: [AuthGuard]},
 //   {path: 'browse', component: BrowseGamesComponent, canActivate: [AuthGuard]},
