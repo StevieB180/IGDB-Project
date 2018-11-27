@@ -28,6 +28,8 @@ export interface IGame {
     publishers?: number[];
     release_dates?: string;
     rating?: string; 
+    total_rating?: string;
+    platforms?: number;
 }
 
 export interface ICover {

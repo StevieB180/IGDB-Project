@@ -11,48 +11,59 @@ import { Observable } from 'rxjs';
   styleUrls: ['./game-info.component.scss']
 })
 export class GameInfoComponent implements OnInit {
-  gameObject: IGame;
   imageString: string;
-  dev: ICompany;
-  comp : number;
-  deve: Observable<ICompany>
-  cos:string;
+  devName: string;
+  devGen: string;
+  devPlat: string;
+  
 
-
-
-
-  constructor(
-    public dialogRef: MatDialogRef<GameInfoComponent>,private _gameService: IgdbService,
-    @Inject(MAT_DIALOG_DATA) public data: IGame) {
-      console.log("GIC: data.cover.url = "+data.cover.url)
-      console.log("GIC: data.DEVELOPER = "+data.developers)
-      console.log("GIC: data = "+JSON.stringify(data))
-      this.gameObject = data
-     }
-
-     onDev(type:number): string {
-     this.comp = this.gameObject.developers;
-
-   this._gameService.getDev(type).subscribe(x => {
-    this.dev = x
-    console.log(x);
-    }) 
-
-       
-
-     console.log('in' + this.dev);
-     return "name"
-      
-   } 
+  constructor(public dialogRef: MatDialogRef<GameInfoComponent>,private _gameService: IgdbService, @Inject(MAT_DIALOG_DATA) public data: IGame) { }
      
+  getDev(devID:number){
+    this._gameService.getDev(devID).subscribe(x => {
+    this.devName = x[0].name;
+    console.log(x)
+    });
+  } 
+ 
+
+  getPlat(devID:number){
+    this._gameService.getPlat(devID).subscribe(x => {
+    this.devPlat = x[0].name;
+    console.log(x)
+    });
+  } 
+
+  getGen(devID:number){
+    this._gameService.getGen(devID).subscribe(x => {
+    this.devGen = x[0].name;
+    console.log(x)
+    });
+  } 
+
   onNoClick(): void {
     this.dialogRef.close();
   }
 
   ngOnInit() {
-    this.imageString = 'http:'+ this.gameObject.cover.url
-  }
+    this.imageString = 'http:'+ this.data.cover.url;
+    
+    if(this.data.developers != null)
+    { this.getDev(this.data.developers[0]); }
 
+    if(this.data.genres != null)
+    {
+       this.getGen(this.data.genres[0]);
+    
+      } 
+
+      if(this.data.platforms != null)
+      {
+         this.getPlat(this.data.platforms[0]);
+      
+        } 
+  }
+  
   
   onBack(): void {
   

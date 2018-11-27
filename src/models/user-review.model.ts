@@ -8,8 +8,8 @@ export interface IUser {
 }
 
 export interface IReview {
-    reviewID: string;
+    // reviewID: string;
     gameID: number;
-    rating: number;
+    rating: string;
     description: string;
 }
