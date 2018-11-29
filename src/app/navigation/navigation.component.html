@@ -5,10 +5,11 @@
     </div>
     <div class="normalNav">
         <a routerLink='home' routerLinkActive='active'>Home</a>
-        <a routerLink='browse' routerLinkActive="active">Browse </a>
+        <a routerLink='browse' routerLinkActive="active" *ngIf="userLoggedIn()">Browse </a>
     </div>
     <div class='loginRegisterNav'>
-        <a routerLink='login' routerLinkActive="active">Login</a>
-        <a routerLink='register' routerLinkActive="active">Register</a>
+        <a (click)='onLogout()' *ngIf="isLoggedIn">Logout</a>
+        <a routerLink='login' routerLinkActive="active" *ngIf="!isLoggedIn">Login</a>
+        <a routerLink='register' routerLinkActive="active" *ngIf="!isLoggedIn">Register</a>
     </div>
 </div>

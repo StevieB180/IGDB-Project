@@ -68,6 +68,7 @@ export class AuthService {
       .then(res => {
         resolve(res);
         this.loggedInStatus = true;
+        this.router.navigate(['home']);
       }, err => reject(err))
     })
   }

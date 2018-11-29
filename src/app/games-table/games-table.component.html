@@ -5,7 +5,7 @@
     </div>
     <div class="midArea">
         <div class="headerRow">
-            <div class="title">{{(game.name)?(game.id):('No Name')}}</div>
+            <div class="title">{{(game.name)?(game.name):('No Name')}}</div>
             <div class="releaseDate">{{(game.release_dates)?(game.release_dates[0].human | date):('No release date')}}</div>
         </div>
         <div class="summary">{{(game.summary)?(game.summary):('No Summary')}}</div>

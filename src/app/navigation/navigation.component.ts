@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class NavigationComponent implements OnInit {
   isLoggedIn: boolean;
   
-  constructor(private auth: AuthService, private myRouth: Router) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   userLoggedIn():boolean{
     this.isLoggedIn = this.auth.isLoggedIn();
@@ -20,7 +20,7 @@ export class NavigationComponent implements OnInit {
   onLogout() {
     this.auth.doLogout();
     this.isLoggedIn = this.auth.isLoggedIn();
-    this.myRouth.navigate(['login']);
+    this.router.navigate(['login']);
   }
 
   ngOnInit() {

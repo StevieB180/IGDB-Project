@@ -24,15 +24,15 @@ export class BrowseGamesComponent implements OnInit {
   }
  
   async ngOnInit() {
-      await this._gameService.getGamesFull('games').subscribe(x => {
-        this.games = x
-        console.log(x);
-        })
-       
+    // await this._gameService.getGamesFull('games').subscribe(x => {
+    //   this.games = x
+    //   console.log(x);
+    //   })
 
    await this._gameService.getSampleGames().subscribe(x => {
      this.games = x;
     })
+    
     this.tableEnabled = true;
   } 
 
