@@ -1,3 +1,5 @@
-<p>
-  review-list works!
-</p>
+<div *ngFor="let review of reviewCollection">
+  <div>Rating: {{(review.rating)?(review.rating):('No Rating')}}</div>
+  <div>Description: {{(review.description)?(review.description):('No Description')}}</div>
+  <div>Written By {{(review.userName)?(review.userName):('Unknown')}}</div>
+</div>

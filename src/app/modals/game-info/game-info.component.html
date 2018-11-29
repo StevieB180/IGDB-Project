@@ -1,4 +1,6 @@
-<div class='col-md-4'>Publisher:</div>
+<div class="col-md-4">Name:</div>
+<div class="col-md-8">{{(data.name)?(data.name):('No Name')}}</div>
+<!-- <div class='col-md-4'>Publisher:</div>
 <div class='col-md-8'>{{devName}}</div>
 <br>
 <div class='col-md-4'> Rating:</div>
@@ -8,4 +10,8 @@
 <div class='col-md-8'>{{devGen}}</div>
 <br>
 <div class='col-md-4'>Platforms:</div>
-<div class='col-md-8'>{{devPlat}}</div>
+<div class='col-md-8'>{{devPlat}}</div> -->
+
+<div class="reviewListContainer" *ngIf='reviews.length > 0'>
+    <app-review-list [reviewCollection]='reviews'></app-review-list>
+</div>

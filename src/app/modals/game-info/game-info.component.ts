@@ -5,7 +5,7 @@ import { BrowseGamesComponent } from '../../browse-games/browse-games.component'
 import { IgdbService } from 'src/app/services/igdb.service';
 import { Observable } from 'rxjs';
 import { FirestoreService } from 'src/app/services/firestore.service';
-import { IReview } from 'src/models/user-review.model';
+import { IReview, IReviewGame } from 'src/models/user-review.model';
 
 @Component({
   selector: 'app-game-info',
@@ -54,17 +54,20 @@ export class GameInfoComponent implements OnInit {
   ngOnInit() {
     this.imageString = 'http:'+ this.data.cover.url;
     
-    if(this.data.developers != null)
-    { this.getDev(this.data.developers[0]); }
+    // if(this.data.developers != null)
+    // { this.getDev(this.data.developers[0]); }
 
-    if(this.data.genres != null)
-    { this.getGen(this.data.genres[0]); } 
+    // if(this.data.genres != null)
+    // { this.getGen(this.data.genres[0]); } 
 
-    if(this.data.platforms != null)
-    { this.getPlat(this.data.platforms[0]); } 
+    // if(this.data.platforms != null)
+    // { this.getPlat(this.data.platforms[0]); } 
 
+
+    this.reviews = [];
+    console.log("Getting reviews for game ID " + this.data.id);
     this._reviewService.getGameReviews(this.data.id).subscribe(x => {
-      this.reviews = x;
+      this.reviews = x[0].reviews;
       console.log(x);
     });
   }

@@ -1,6 +1,10 @@
-export interface IReview {
+export interface IReviewGame {
     gameID: number;
+    reviews: IReview[];
+}
+
+export interface IReview {
     rating: string;
     description: string;
-    userID?: string;
+    userName: string;
 }

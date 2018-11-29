@@ -11,6 +11,7 @@ import * as firebase from 'firebase/';
 export class AuthService {
   
   private user: Observable<firebase.User>;
+  private userName: string;
   loggedInStatus: boolean = false;
 
   constructor(private _firebaseAuth: AngularFireAuth, private router: Router, private notifier: NotificationService) {
@@ -37,6 +38,9 @@ export class AuthService {
           registrationDate: new Date().toString(),
           name: name
         })
+          .then(() => {
+            res.user.updateProfile({displayName: name, photoURL: null})
+          })
           .then(() => {
             firebase.auth().signOut();
             this.router.navigate(['login']);

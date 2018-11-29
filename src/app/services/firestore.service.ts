@@ -9,7 +9,7 @@
 // }
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { IReview } from '../../models/user-review.model';
+import { IReview, IReviewGame } from '../../models/user-review.model';
 import { HttpClient, HttpErrorResponse} from '@angular/common/http';
 
 import { throwError } from 'rxjs';
@@ -23,33 +23,22 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 
 @Injectable()
 export class FirestoreService {
-  reviewCollection: AngularFirestoreCollection<IReview>;
-  review: Observable<IReview[]>;
-  allReview: IReview[];
+  gameReviewCollection: AngularFirestoreCollection<IReviewGame>;
+  // review: Observable<IReview[]>;
+  // allReview: IReview[];
   errorMessage: string; 
 
   constructor(private _http: HttpClient, private _afs:AngularFirestore) { 
-    this.reviewCollection = _afs.collection<IReview>("review");
+    this.gameReviewCollection = _afs.collection<IReviewGame>("reviews");
   }
   //add reviews to a collection
-  addReview(review: IReview): void{
-    this.reviewCollection.add(review);
+  addReview(review: IReviewGame): void{
+    this._afs.collection<IReviewGame>("reviews").add(review);
   }
 
   getGameReviews(gameID: number){
-    let gameReviews: Observable<IReview[]>;
-
-    gameReviews = this.reviewCollection.snapshotChanges().pipe(
-      map(action => action.map(a => {
-        const data = a.payload.doc.data() as IReview;
-        const id = a.payload.doc.id;
-
-        if(data.gameID == gameID)
-        { return { id, ...data} }
-      }))
-    )
-
-    return gameReviews;
+    // return this._afs.collection<IReviewGame>("reviews", ref => ref.where('gameID','==',gameID)).valueChanges();
+    return this._afs.collection<IReviewGame>("reviews").valueChanges();
   }
 
   //any errors

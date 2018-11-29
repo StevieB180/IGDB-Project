@@ -30,7 +30,6 @@ import { GameInfoComponent } from './modals/game-info/game-info.component';
 import { WriteReviewComponent } from './modals/write-review/write-review.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ReviewListComponent } from './review-list/review-list.component';
-import { ReviewRowComponent } from './review-row/review-row.component';
 import { NotificationsComponent } from './notifications/notifications.component'
 
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
@@ -61,7 +60,6 @@ import { FirestoreService } from './services/firestore.service';
     WriteReviewComponent,
     NavigationComponent,
     ReviewListComponent,
-    ReviewRowComponent,
     NotificationsComponent,
     HomeComponent,
     GamesTableComponent,

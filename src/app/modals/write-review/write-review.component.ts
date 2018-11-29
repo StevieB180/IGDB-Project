@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { IGame } from 'src/models/game-model';
 import { FirestoreService } from '../../services/firestore.service';
-import { IReview } from 'src/models/user-review.model';
+import { IReview, IReviewGame } from 'src/models/user-review.model';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -27,14 +27,24 @@ export class WriteReviewComponent implements OnInit{
     console.log("rating: " + this.rating);
     console.log("description: " + this.description);
 
-    let review: IReview = {
-      userID : this.user.uid,
-      gameID : this.data.id,
+    let newReview: IReview = {
+      userName : this.user.displayName,
       rating : this.rating,
       description : this.description
     };
+
+    let gameReviews: IReview[] = []; 
+    this._reviewService.getGameReviews(this.data.id).subscribe(x => {
+      ((x[0])?(gameReviews = x[0].reviews):(console.log('no existing reviews')));
+    });
+    gameReviews.push(newReview);
+
+    let reviewGame: IReviewGame = {
+      gameID : this.data.id,
+      reviews : gameReviews
+    }
     
-    this._reviewService.addReview(review);
+    this._reviewService.addReview(reviewGame);
 
     this.dialogRef.close();
   }
