@@ -9,8 +9,8 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'browse', component: BrowseGamesComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'browse', component: BrowseGamesComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
