@@ -4,6 +4,8 @@ import { IGame, ICompany } from 'src/models/game-model';
 import { BrowseGamesComponent } from '../../browse-games/browse-games.component';
 import { IgdbService } from 'src/app/services/igdb.service';
 import { Observable } from 'rxjs';
+import { FirestoreService } from 'src/app/services/firestore.service';
+import { IReview } from 'src/models/user-review.model';
 
 @Component({
   selector: 'app-game-info',
@@ -15,9 +17,13 @@ export class GameInfoComponent implements OnInit {
   devName: string;
   devGen: string;
   devPlat: string;
-  
+  reviews: IReview[];
 
-  constructor(public dialogRef: MatDialogRef<GameInfoComponent>,private _gameService: IgdbService, @Inject(MAT_DIALOG_DATA) public data: IGame) { }
+  constructor(
+    public _reviewService: FirestoreService,
+    public dialogRef: MatDialogRef<GameInfoComponent>,
+    private _gameService: IgdbService, 
+    @Inject(MAT_DIALOG_DATA) public data: IGame) { }
      
   getDev(devID:number){
     this._gameService.getDev(devID).subscribe(x => {
@@ -52,22 +58,14 @@ export class GameInfoComponent implements OnInit {
     { this.getDev(this.data.developers[0]); }
 
     if(this.data.genres != null)
-    {
-       this.getGen(this.data.genres[0]);
-    
-      } 
+    { this.getGen(this.data.genres[0]); } 
 
-      if(this.data.platforms != null)
-      {
-         this.getPlat(this.data.platforms[0]);
-      
-        } 
+    if(this.data.platforms != null)
+    { this.getPlat(this.data.platforms[0]); } 
+
+    this._reviewService.getGameReviews(this.data.id).subscribe(x => {
+      this.reviews = x;
+      console.log(x);
+    });
   }
-  
-  
-  onBack(): void {
-  
-   this.dialogRef.close();
-  }
-  
 }

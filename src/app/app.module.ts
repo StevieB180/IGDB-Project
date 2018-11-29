@@ -47,6 +47,7 @@ import { HomeComponent } from './home/home.component';
 import { IgdbService } from './services/igdb.service';
 import { HttpClientModule } from '@angular/common/http';
 import { GamesTableComponent } from './games-table/games-table.component';
+import { FirestoreService } from './services/firestore.service';
 
 
 
@@ -87,7 +88,7 @@ import { GamesTableComponent } from './games-table/games-table.component';
     FontAwesomeModule
   ],
 
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, IgdbService],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, IgdbService, FirestoreService],
   bootstrap: [AppComponent],
   entryComponents: [
     GameInfoComponent,

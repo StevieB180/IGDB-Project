@@ -33,8 +33,10 @@ export class WriteReviewComponent implements OnInit{
       rating : this.rating,
       description : this.description
     };
-
+    
     this._reviewService.addReview(review);
+
+    this.dialogRef.close();
   }
 
   ngOnInit() {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirestoreService } from '../services/firestore.service';
 
 @Component({
   selector: 'app-review-list',
