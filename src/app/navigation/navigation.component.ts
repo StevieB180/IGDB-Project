@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
   isLoggedIn: boolean;
-  
+  user: firebase.User;
+
   constructor(private auth: AuthService, private router: Router) { }
 
   userLoggedIn():boolean{

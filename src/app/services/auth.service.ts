@@ -17,6 +17,10 @@ export class AuthService {
     this.user = _firebaseAuth.authState;
   }
 
+  getUser() {
+    return this.user;
+  }
+
   signup(email: string, password: string, name: string) {
     // clear all messages
     this.notifier.display(false, '');
