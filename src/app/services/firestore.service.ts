@@ -37,8 +37,7 @@ export class FirestoreService {
   }
 
   getGameReviews(gameID: number){
-    // return this._afs.collection<IReviewGame>("reviews", ref => ref.where('gameID','==',gameID)).valueChanges();
-    return this._afs.collection<IReviewGame>("reviews").valueChanges();
+    return this._afs.collection<IReviewGame>("reviews", ref => ref.where('gameID','==',gameID)).valueChanges();
   }
 
   //any errors

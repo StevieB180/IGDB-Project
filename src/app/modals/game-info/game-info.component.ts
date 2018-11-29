@@ -63,11 +63,10 @@ export class GameInfoComponent implements OnInit {
     // if(this.data.platforms != null)
     // { this.getPlat(this.data.platforms[0]); } 
 
-
     this.reviews = [];
     console.log("Getting reviews for game ID " + this.data.id);
     this._reviewService.getGameReviews(this.data.id).subscribe(x => {
-      this.reviews = x[0].reviews;
+      this.reviews = (x[0])?(x[0].reviews):([]);
       console.log(x);
     });
   }
