@@ -15,18 +15,17 @@
       <input matInput placeholder="Password" type="password" name="password" formControlName="password">
   </mat-form-field>
   </form>
+  <label class="error">{{errorMessage}}</label>
 </mat-card-content>
 <mat-card-actions>
   <button mat-raised-button (click)="login()" color="primary">Login</button>
 </mat-card-actions>
-<div class="col-md-4 col-md-offset-3"> 
+<mat-card-actions class="col-md-3 col-md-offset-3"> 
   <button (click)="tryFacebookLogin()" class="btn btn-block btn-social btn-facebook">
     <span class="fab fa-facebook-f"></span> Login in with Facebook
   </button>
-</div>
-  <div class="col-md-4 col-md-offset-3">
       <button (click)="tryGoogleLogin()" class="btn btn-block btn-social btn-google">
           <span class="fab fa-google"></span> Login in with Google
         </button>
-</div>
+      </mat-card-actions>
 </mat-card>

@@ -8,8 +8,7 @@ import { of, Observable } from 'rxjs';
 })
 export class IgdbService {
   ENDPOINT: string = 'https://cors-anywhere.herokuapp.com/https://api-endpoint.igdb.com';
-  // KEY: string = '43264b7755b2a0ed6f2f76f4374c6604';
-  KEY: string = '55735e89630b9e1c3e0ebc535f4543e4';
+  KEY: string = '92a038d46b2e12937fd501eab181afa7';
   constructor(private _http: HttpClient) {[]
    }
 
