@@ -23,8 +23,6 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 @Injectable()
 export class FirestoreService {
   gameReviewCollection: AngularFirestoreCollection<IReviewGame>;
-  // review: Observable<IReview[]>;
-  // allReview: IReview[];
   errorMessage: string; 
 
   constructor(private _http: HttpClient, private _afs:AngularFirestore) { 
@@ -38,7 +36,6 @@ export class FirestoreService {
   }
 
   getGameReviews(gameID: number){
-    // return this._afs.collection<IReviewGame>("reviews").doc(gameID.toString()).get();
     return this._afs.collection<IReviewGame>("reviews", ref => ref.where('gameID','==',gameID)).valueChanges();
   }
 

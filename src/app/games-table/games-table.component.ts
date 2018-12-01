@@ -28,7 +28,6 @@ export class GamesTableComponent implements OnInit {
 
   openGameReviewModal(game: IGame): void{
     const dialogRef = this.dialog.open(WriteReviewComponent, {
-      // width: '600px',
       data: game
     })
   }
@@ -36,12 +35,6 @@ export class GamesTableComponent implements OnInit {
   getGameCover(g : IGame): string {
     return ('http:' + g.cover.url);
   }
-  // dev(g : IGame): string {
-  //   return (g.developers.toString());
-  // }
-  //openGameInfo(g: IGame) {
-    //window.open(g.url);
-  //}
 
   openGameInfo(game: IGame): void {
     const dialogRef = this.dialog.open(GameInfoComponent, {
@@ -49,7 +42,4 @@ export class GamesTableComponent implements OnInit {
     })
   }
   
-  // getGameDev(companyID: number): string {
-  //   return this._gameService.getGameCompanyName(companyID);
-  // }
 }
