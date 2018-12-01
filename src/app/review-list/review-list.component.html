@@ -1,5 +1,5 @@
-<div *ngFor="let review of reviewCollection">
-  <div>Rating: {{(review.rating)?(review.rating):('No Rating')}}</div>
-  <div>Description: {{(review.description)?(review.description):('No Description')}}</div>
-  <div>Written By {{(review.userName)?(review.userName):('Unknown')}}</div>
+<div class="reviewContainer" *ngFor="let review of reviewCollection">
+  <div class="author">{{(review.userName)?(review.userName):('Unknown')}}</div>
+  <div class="rating">{{(review.rating)?(review.rating + '/10'):('No Rating')}}</div>
+  <div class="description">{{(review.description)?(review.description):('No Description')}}</div>
 </div>

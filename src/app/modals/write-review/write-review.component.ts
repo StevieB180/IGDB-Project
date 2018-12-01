@@ -4,6 +4,7 @@ import { IGame } from 'src/models/game-model';
 import { FirestoreService } from '../../services/firestore.service';
 import { IReview, IReviewGame } from 'src/models/user-review.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { ConsoleReporter } from 'jasmine';
 
 @Component({
   selector: 'app-write-review',
@@ -15,6 +16,8 @@ export class WriteReviewComponent implements OnInit{
   rating: string;
   description: string;
   user: firebase.User;
+
+  reviewGame: IReviewGame;
 
   constructor( 
     private auth: AuthService,
@@ -33,18 +36,12 @@ export class WriteReviewComponent implements OnInit{
       description : this.description
     };
 
-    let gameReviews: IReview[] = []; 
-    this._reviewService.getGameReviews(this.data.id).subscribe(x => {
-      ((x[0])?(gameReviews = x[0].reviews):(console.log('no existing reviews')));
-    });
-    gameReviews.push(newReview);
-
-    let reviewGame: IReviewGame = {
-      gameID : this.data.id,
-      reviews : gameReviews
-    }
+    if (this.reviewGame.gameID)
+    { this.reviewGame.gameID = this.data.id }
     
-    this._reviewService.addReview(reviewGame);
+    this.reviewGame.reviews.push(newReview);
+
+    this._reviewService.addReview(this.reviewGame);
 
     this.dialogRef.close();
   }
@@ -53,6 +50,10 @@ export class WriteReviewComponent implements OnInit{
     this.auth.getUser().subscribe(x=> {
       this.user = x;
       console.log("User ID: " + x.uid);
+    });
+
+    this._reviewService.getGameReviews(this.data.id).subscribe(x => {
+      ((x[0])?(this.reviewGame = x[0]):(console.log('no existing reviews')));
     });
   }
 

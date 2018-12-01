@@ -12,7 +12,6 @@ import { Injectable } from '@angular/core';
 import { IReview, IReviewGame } from '../../models/user-review.model';
 import { HttpClient, HttpErrorResponse} from '@angular/common/http';
 
-import { throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
@@ -33,10 +32,13 @@ export class FirestoreService {
   }
   //add reviews to a collection
   addReview(review: IReviewGame): void{
-    this._afs.collection<IReviewGame>("reviews").add(review);
+    console.log("Adding review object: ");
+    console.log(review);
+    this._afs.collection<IReviewGame>("reviews").doc(review.gameID.toString()).set(review);
   }
 
   getGameReviews(gameID: number){
+    // return this._afs.collection<IReviewGame>("reviews").doc(gameID.toString()).get();
     return this._afs.collection<IReviewGame>("reviews", ref => ref.where('gameID','==',gameID)).valueChanges();
   }
 

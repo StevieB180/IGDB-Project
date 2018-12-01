@@ -10,6 +10,17 @@ import { debounceTime, distinctUntilChanged } from "rxjs/operators"
   styleUrls: ['./browse-games.component.scss']
 })
 export class BrowseGamesComponent implements OnInit {
+  //////////////////////////////////////////////////////////////////
+  //Change this to toggle usage of sample games from json-server  //
+  //(Remember to start it using 'json-server --watch db.json')    //
+  //                                                              //
+  //  FALSE = Uses API calls to IGDB                              //
+  //                                                              //
+  //  TRUE  = Uses sample data from db.json                       //
+  //                                                              //
+  //////////////////////////////////////////////////////////////////
+  useSampleGames = true;
+
   games: IGame[] = [];
   gamesF: ICompany;
   ageRatingFormat: number = 0;
@@ -24,14 +35,19 @@ export class BrowseGamesComponent implements OnInit {
   }
  
   async ngOnInit() {
-    // await this._gameService.getGamesFull('games').subscribe(x => {
-    //   this.games = x
-    //   console.log(x);
-    //   })
-
-   await this._gameService.getSampleGames().subscribe(x => {
-     this.games = x;
-    })
+    if(this.useSampleGames) {
+      await this._gameService.getSampleGames().subscribe(x => {
+        this.games = x;
+        })
+      if(this.games.length == 0)
+      { console.log('No games found. Is the JSON server started?') }
+    }
+    else {
+      await this._gameService.getGamesFull('games').subscribe(x => {
+        this.games = x
+        console.log(x);
+        })  
+    }
     
     this.tableEnabled = true;
   } 

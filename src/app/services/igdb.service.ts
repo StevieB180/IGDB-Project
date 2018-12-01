@@ -23,7 +23,7 @@ export class IgdbService {
    //MK// return this._http.get<IGame[]>(this.ENDPOINT + '/games/?fields=*&limit=10&expand=game,game.developers,game.publishers,game.genres&filter[release_dates.date][lt]=1999-12-31',
    // return this._http.get<IGame[]>(this.ENDPOINT + `/${type}/?fields=*&limit=10&order=popularity:desc`,
     //return this._http.get<IGame[]>(this.ENDPOINT + `/${type}/?fields=*&limit=10&order=created_at:asc`,&order=release_dates.date:asc
-    return this._http.get<IGame[]>(this.ENDPOINT + `/${type}/?fields=*&limit=20&count?&filter[release_dates.date][gt]=788982179000`,
+    return this._http.get<IGame[]>(this.ENDPOINT + `/${type}/?fields=*&limit=2&count?&filter[release_dates.date][gt]=788982179000`,
     {headers: {
       "Accept":"application/json",
       "user-key":this.KEY

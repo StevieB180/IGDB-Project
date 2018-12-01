@@ -1,0 +1,16 @@
+.reviewContainer {
+    display: grid;
+    grid-template-areas: 'author rating'
+                         'desc desc';
+    grid-template-columns: auto 1fr;
+
+    .author {
+        grid-area: author;
+    }
+    .rating {
+        grid-area: rating;
+    }
+    .description{
+        grid-area: desc;
+    }
+}

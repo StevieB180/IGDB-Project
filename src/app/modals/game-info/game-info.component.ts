@@ -17,6 +17,8 @@ export class GameInfoComponent implements OnInit {
   devName: string;
   devGen: string;
   devPlat: string;
+
+  pageLoaded: boolean = false;
   reviews: IReview[];
 
   constructor(
@@ -24,6 +26,29 @@ export class GameInfoComponent implements OnInit {
     public dialogRef: MatDialogRef<GameInfoComponent>,
     private _gameService: IgdbService, 
     @Inject(MAT_DIALOG_DATA) public data: IGame) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  ngOnInit() {
+    this.getExtraDetails();
+
+    this.pageLoaded = true;
+  }
+
+  getExtraDetails() {
+    // if(this.data.developers != null)
+    // { this.getDev(this.data.developers[0]); }
+
+    // if(this.data.genres != null)
+    // { this.getGen(this.data.genres[0]); } 
+
+    // if(this.data.platforms != null)
+    // { this.getPlat(this.data.platforms); } 
+    
+    this.getReviews();
+  }
      
   getDev(devID:number){
     this._gameService.getDev(devID).subscribe(x => {
@@ -32,6 +57,25 @@ export class GameInfoComponent implements OnInit {
     });
   } 
  
+  getGen(devID:number){
+    this._gameService.getGen(devID).subscribe(x => {
+    this.devGen = x[0].name;
+    console.log(x)
+    });
+  } 
+
+  getGameCover(): string {
+    return ('http:' + this.data.cover.url);
+  }
+
+  getReviews() {
+    this.reviews = [];
+    console.log("Getting reviews for game ID " + this.data.id);
+    this._reviewService.getGameReviews(this.data.id).subscribe(x => {
+      this.reviews = (x)?(x[0].reviews):([]);
+      console.log(x);
+    });
+  }
 
   getPlat(devID:number){
     this._gameService.getPlat(devID).subscribe(x => {
@@ -40,34 +84,4 @@ export class GameInfoComponent implements OnInit {
     });
   } 
 
-  getGen(devID:number){
-    this._gameService.getGen(devID).subscribe(x => {
-    this.devGen = x[0].name;
-    console.log(x)
-    });
-  } 
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  ngOnInit() {
-    this.imageString = 'http:'+ this.data.cover.url;
-    
-    // if(this.data.developers != null)
-    // { this.getDev(this.data.developers[0]); }
-
-    // if(this.data.genres != null)
-    // { this.getGen(this.data.genres[0]); } 
-
-    // if(this.data.platforms != null)
-    // { this.getPlat(this.data.platforms[0]); } 
-
-    this.reviews = [];
-    console.log("Getting reviews for game ID " + this.data.id);
-    this._reviewService.getGameReviews(this.data.id).subscribe(x => {
-      this.reviews = (x[0])?(x[0].reviews):([]);
-      console.log(x);
-    });
-  }
 }
