@@ -38,14 +38,14 @@ export class GameInfoComponent implements OnInit {
   }
 
   getExtraDetails() {
-    // if(this.data.developers != null)
-    // { this.getDev(this.data.developers[0]); }
+    if(this.data.developers != null)
+    { this.getDev(this.data.developers[0]); }
 
-    // if(this.data.genres != null)
-    // { this.getGen(this.data.genres[0]); } 
+    if(this.data.genres != null)
+    { this.getGen(this.data.genres[0]); } 
 
-    // if(this.data.platforms != null)
-    // { this.getPlat(this.data.platforms); } 
+    if(this.data.platforms != null)
+    { this.getPlat(this.data.platforms); } 
     
     this.getReviews();
   }

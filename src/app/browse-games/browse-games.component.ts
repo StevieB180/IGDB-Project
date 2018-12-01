@@ -21,9 +21,9 @@ export class BrowseGamesComponent implements OnInit {
   //////////////////////////////////////////////////////////////////
   useSampleGames = true;
 
+  gamesMaster: IGame[] = [];
   games: IGame[] = [];
-  gamesF: ICompany;
-  ageRatingFormat: number = 0;
+  
   searchTerm: FormControl = new FormControl;
   tableEnabled: boolean = false;
 
@@ -38,15 +38,16 @@ export class BrowseGamesComponent implements OnInit {
     if(this.useSampleGames) {
       await this._gameService.getSampleGames().subscribe(x => {
         this.games = x;
+        this.gamesMaster = x;
         })
       if(this.games.length == 0)
       { console.log('No games found. Is the JSON server started?') }
     }
     else {
       await this._gameService.getGamesFull('games').subscribe(x => {
-        this.games = x
-        console.log(x);
-        })  
+        this.games = x;
+        this.gamesMaster = x;
+        })
     }
     
     this.tableEnabled = true;
@@ -57,30 +58,18 @@ export class BrowseGamesComponent implements OnInit {
     console.log(this.games);
   }
 
-  changeAgeRating(): void {
-    if(this.ageRatingFormat == 0)
-    { this.ageRatingFormat = 1; }
-    else
-    { this.ageRatingFormat = 0}
-  }
-
   async searchGame(filterBy: string) {
     this.tableEnabled = false;
-    // this.games.length = 0;
+    this.games.length = 0;
 
     if(filterBy.length > 0) {
-      // await this._gameService.searchGames(filterBy).subscribe(x => {
-      //   this.games = x;
-      //   console.log('Search results:')
-      //   console.log(x);
-      // });
+      this._gameService.searchGames(filterBy).subscribe(x => {
+        this.games = x;
+      });
+
     }
     else {
-      // await this._gameService.getGamesFull().subscribe(x => {
-      //   this.games = x;
-      //   console.log('Search cleared')
-      //   console.log(x);
-      // });
+      this.games = this.gamesMaster;
     }
     this.tableEnabled = true;
   }

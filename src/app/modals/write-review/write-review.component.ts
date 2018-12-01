@@ -36,8 +36,16 @@ export class WriteReviewComponent implements OnInit{
       description : this.description
     };
 
-    if (this.reviewGame.gameID)
+    if (this.reviewGame != null)
     { this.reviewGame.gameID = this.data.id }
+    else
+    {
+      this.reviewGame =
+        {
+          gameID: this.data.id,
+          reviews: []
+        }
+    }
     
     this.reviewGame.reviews.push(newReview);
 
