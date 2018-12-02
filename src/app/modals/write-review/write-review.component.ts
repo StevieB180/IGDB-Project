@@ -4,7 +4,6 @@ import { IGame } from 'src/models/game-model';
 import { FirestoreService } from '../../services/firestore.service';
 import { IReview, IReviewGame } from 'src/models/user-review.model';
 import { AuthService } from 'src/app/services/auth.service';
-import { ConsoleReporter } from 'jasmine';
 
 @Component({
   selector: 'app-write-review',
