@@ -26,10 +26,14 @@ export interface IGame {
     url?: string;
     developers?: number;
     publishers?: number[];
-    release_dates?: string;
+    release_dates?: IReleaseDate;
     rating?: string; 
     total_rating?: string;
     platforms?: number;
+}
+
+export interface IReleaseDate {
+    human: string;
 }
 
 export interface ICover {

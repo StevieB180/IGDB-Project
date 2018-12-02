@@ -79,12 +79,12 @@ export class BrowseGamesComponent implements OnInit {
   changeSortType() {
     if(this.sortType == 'Name') {
       this.sortType = 'Date';
+      this.sortByDate();
     }
     else if(this.sortType == 'Date') {
       this.sortType = 'Name';
+      this.sortByName();
     }
-
-    this.performSort();
   }
   
   sortDirection: string = 'keyboard_arrow_up'
@@ -96,11 +96,22 @@ export class BrowseGamesComponent implements OnInit {
       this.sortDirection = 'keyboard_arrow_up';
     }
 
-    this.performSort();
+    this.games.reverse();
   }
 
-  performSort() {
-    console.log('Sort Type = ' + this.sortType)
-    console.log('Sort Direction = ' + this.sortDirection)
+  sortByDate(): void {
+    this.games.sort((a: IGame, b: IGame) => {
+      let date1 = new Date(a.release_dates[0].human)
+      let date2 = new Date(b.release_dates[0].human)
+      return (date1.getFullYear() - date2.getFullYear());
+    });
+  }
+
+  sortByName(): void {
+    this.games.sort((a: IGame, b: IGame) => {
+      if(a.name > b.name) { return -1; }
+      if(a.name < b.name) { return 1; }
+      return 0;
+    });
   }
 }
