@@ -2,10 +2,17 @@
     <!-- Searching and stuff -->
     <div class="topRow">
         <div class="pageTitle" (click)='testButton()'>Games List</div>
-        <div>
-            <button class="btn btn-primary btn-sm" (click)='changeAgeRating()' *ngIf='ageRatingFormat == 1'>PEGI</button>
-            <button class="btn btn-primary btn-sm" (click)='changeAgeRating()' *ngIf='ageRatingFormat == 0'>ESRB</button>
+        
+        <div class="filters">
+            Sort By:
+            <button class="btn btn-primary btn-sm" (click)='changeSortType()'>
+                {{sortType}}
+            </button>
+            <button class="btn btn-primary btn-sm" (click)='changeSortDirection()'>
+                <mat-icon style='font-size: 1.2em; height: 20px;' >{{sortDirection}}</mat-icon>
+            </button>
         </div>
+
         <div class="searchBox">
             <input [formControl]='searchTerm' type="text" value="" class="form-control" placeholder="Search...">
         </div>

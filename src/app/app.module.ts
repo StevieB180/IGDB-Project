@@ -12,7 +12,8 @@ import { MatDialogModule,
   MatListModule,
   MatInputModule,
   MatProgressSpinnerModule,
-  MatTableModule } from '@angular/material';
+  MatTableModule,
+  MatIconModule } from '@angular/material';
 
 import { FontAwesomeModule } from'@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -84,7 +85,8 @@ import {SlideshowModule} from 'ng-simple-slideshow';
     HttpClientModule,
     MatTableModule,
     FontAwesomeModule,
-    SlideshowModule
+    SlideshowModule,
+    MatIconModule
   ],
 
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, IgdbService, FirestoreService],

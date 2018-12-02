@@ -73,4 +73,34 @@ export class BrowseGamesComponent implements OnInit {
     }
     this.tableEnabled = true;
   }
+
+  
+  sortType: string = 'Name';
+  changeSortType() {
+    if(this.sortType == 'Name') {
+      this.sortType = 'Date';
+    }
+    else if(this.sortType == 'Date') {
+      this.sortType = 'Name';
+    }
+
+    this.performSort();
+  }
+  
+  sortDirection: string = 'keyboard_arrow_up'
+  changeSortDirection() {
+    if(this.sortDirection == 'keyboard_arrow_up') {
+      this.sortDirection = 'keyboard_arrow_down';
+    }
+    else if(this.sortDirection == 'keyboard_arrow_down') {
+      this.sortDirection = 'keyboard_arrow_up';
+    }
+
+    this.performSort();
+  }
+
+  performSort() {
+    console.log('Sort Type = ' + this.sortType)
+    console.log('Sort Direction = ' + this.sortDirection)
+  }
 }
