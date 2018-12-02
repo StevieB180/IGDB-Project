@@ -32,6 +32,9 @@ export class AuthService {
         this.sendEmailVerification();
         const message = 'A verification email has been sent, please check your email and follow the steps!';
         this.notifier.display(true, message);
+        setTimeout(() => {
+          this.notifier.display(false, '');
+        }, 10000);
         return firebase.database().ref('users/' + res.user.uid).set({
           email: res.user.email,
           uid: res.user.uid,
@@ -49,6 +52,9 @@ export class AuthService {
       .catch(err => {
         console.log(err);
         this.notifier.display(true, err.message);
+        setTimeout(() => {
+          this.notifier.display(false, '');
+        }, 5000);
       });
   }
 

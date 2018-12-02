@@ -1,6 +1,7 @@
 .navContainer{
     display: grid;
     grid-template-columns: auto 1fr auto;
+    grid-column-gap: 20px;
     padding: 10px;
     background: #343a40;
 
