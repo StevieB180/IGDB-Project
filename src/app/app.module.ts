@@ -47,7 +47,7 @@ import { IgdbService } from './services/igdb.service';
 import { HttpClientModule } from '@angular/common/http';
 import { GamesTableComponent } from './games-table/games-table.component';
 import { FirestoreService } from './services/firestore.service';
-
+import {SlideshowModule} from 'ng-simple-slideshow';
 
 
 @NgModule({
@@ -83,7 +83,8 @@ import { FirestoreService } from './services/firestore.service';
     MatProgressSpinnerModule,
     HttpClientModule,
     MatTableModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    SlideshowModule
   ],
 
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, IgdbService, FirestoreService],

@@ -2,6 +2,31 @@
   <div class="imgContainer">
       <img src="./assets/images/logo2.png"/>
   </div>
+  
+    <div style="display:block;"
+         [style.width]="width">
+      <slideshow #slideshow
+                 [imageUrls]="imageUrls"
+                 [height]="height"
+                 [minHeight]="minHeight"
+                 [disableSwiping]="disableSwiping"
+                 [autoPlay]="autoPlay"
+                 [stopAutoPlayOnSlide]="stopAutoPlayOnSlide"
+                 [debug]="debug"
+                 [backgroundSize]="backgroundSize"
+                 [backgroundPosition]="backgroundPosition"
+                 [backgroundRepeat]="backgroundRepeat"
+                 [showDots]="showDots"
+                 [dotColor]="dotColor"
+                 [showCaptions]="showCaptions"
+                 [captionColor]="captionColor"
+                 [captionBackground]="captionBackground"
+                 [lazyLoad]="lazyLoad"
+                 [hideOnNoSlides]="hideOnNoSlides">
+      </slideshow>
+    </div>
+  
+  
   <div class="creatorContainer">
     Developed by:
     <div>

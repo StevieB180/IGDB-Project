@@ -76,6 +76,7 @@ export class GameInfoComponent implements OnInit {
       console.log(x);
     });
   }
+  
 
   getPlat(devID:number){
     this._gameService.getPlat(devID).subscribe(x => {
