@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.doLogin(this.form.value)
     .then(res => {
-      this.myRoute.navigate(['browse']);
+      this.myRoute.navigate(['home']);
     }, firebase => {
       console.log(firebase);
       this.errorMessage = firebase.message;
@@ -37,14 +37,14 @@ export class LoginComponent implements OnInit {
 tryFacebookLogin(){
   this.authService.doFacebookLogin()
   .then(res => {
-    this.myRoute.navigate(['/browse']);
+    this.myRoute.navigate(['/home']);
   })
 }
 //login with google button 
 tryGoogleLogin(){
   this.authService.doGoogleLogin()
   .then(res => {
-    this.myRoute.navigate(['/browse']);
+    this.myRoute.navigate(['/home']);
   })
 }
 }

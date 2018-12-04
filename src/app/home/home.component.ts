@@ -13,13 +13,13 @@ export class HomeComponent implements OnInit {
     { url: 'https://i.redd.it/48t7k73gcycy.png' },
     { url: 'https://i.redd.it/i42lna99hyiy.png' },
     { url: 'https://i.redd.it/n346gjjajfuy.png'},
-    { url: 'https://i.redd.it/78tortovrt911.png'}
+    { url: 'https://i.redd.it/78tortovrt911.png'},
+    {url: 'https://i.redd.it/fymwqa1zz6hy.jpg'},
+    {url: 'http://i.imgur.com/5HS6gmr.jpg'}
     
   ];
-  height: string = '400px';
+  height: string = '425px';
   minHeight: string;
-  // arrowSize: string = '30px';
-  // showArrows: boolean = true;
   disableSwiping: boolean = false;
   autoPlay: boolean = true;
   autoPlayInterval: number = 3333;

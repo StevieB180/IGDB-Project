@@ -12,6 +12,7 @@
       <mat-form-field>
           <input [(ngModel)]="pwd" name="password" matInput placeholder="password" type="password">
         </mat-form-field>
+        <label class="error">{{errorMessage}}</label>
         <br>
         <mat-form-field>
             <input [(ngModel)]="name" name="name" matInput placeholder="name">
@@ -23,7 +24,7 @@
             <br>
             <button (click)="register()" mat-raised-button color="primary">Register</button>
     </form>
-    <label class="error">{{errorMessage}}</label>
+    
   </mat-card-content>
 </mat-card>
 <app-notifications></app-notifications>
