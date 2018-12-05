@@ -12,6 +12,7 @@ export class RegisterComponent implements OnInit {
   errorMessage: string;
   email: string;
   pwd: string;
+  cpwd: string;
   name: string;
   description: string;
   

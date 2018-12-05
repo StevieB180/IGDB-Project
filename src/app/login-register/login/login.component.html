@@ -1,9 +1,8 @@
+<div class="signin-content">
 <mat-card>
-  <mat-card-header>
-      <mat-card-title>
+  <div class="header">
         <h4>Please Login</h4>
-      </mat-card-title>
-    </mat-card-header>
+      </div>
 <mat-card-content>
   <form class="my-form" [formGroup] ="form" (ngSubmit)="login()">
     <mat-form-field class="half-width">
@@ -20,12 +19,12 @@
 <mat-card-actions>
   <button mat-raised-button (click)="login()" color="primary">Login</button>
 </mat-card-actions>
-<mat-card-actions class="col-md-3 col-md-offset-3"> 
-  <button (click)="tryFacebookLogin()" class="btn btn-block btn-social btn-facebook">
+  <button (click)="tryFacebookLogin()" class="btn btn-sm btn-social btn-facebook">
     <span class="fab fa-facebook-f"></span> Login in with Facebook
   </button>
-      <button (click)="tryGoogleLogin()" class="btn btn-block btn-social btn-google">
+  <br>
+      <button (click)="tryGoogleLogin()" class="btn btn-sm btn-social btn-google">
           <span class="fab fa-google"></span> Login in with Google
-        </button>
-      </mat-card-actions>
+        </button>  
 </mat-card>
+</div>

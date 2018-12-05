@@ -3,7 +3,7 @@
         <img src="../../assets/images/logo.png"/>
     </div>
     <div class="normalNav">
-        <a routerLink='home' routerLinkActive='active'>Home</a>
+        <a routerLink='home' routerLinkActive='active' *ngIf="userLoggedIn()">Home</a>
         <a routerLink='browse' routerLinkActive="active" *ngIf="userLoggedIn()">Browse </a>
     </div>
     <div class='loginRegisterNav'>

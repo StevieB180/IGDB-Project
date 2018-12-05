@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/IGDB-Project",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

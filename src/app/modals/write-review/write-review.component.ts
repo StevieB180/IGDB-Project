@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./write-review.component.scss'],
   providers: [FirestoreService]
 })
+
 export class WriteReviewComponent implements OnInit{
   rating: string;
   description: string;

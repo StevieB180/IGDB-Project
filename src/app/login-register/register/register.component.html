@@ -1,30 +1,29 @@
+<div class="signin-content">
 <mat-card>
-  <mat-card-header>
-    <mat-card-title>
+  <div class="header">
       <h4>Register New User</h4>
-    </mat-card-title>
-  </mat-card-header>
+    </div>
   <mat-card-content>
     <form>
-      <mat-form-field>
-        <input [(ngModel)]="email" name="email" matInput placeholder="email" type="email">
+      <mat-form-field class="email">
+        <input [(ngModel)]="email" name="email" matInput placeholder="Email" type="email">
       </mat-form-field>
       <mat-form-field>
-          <input [(ngModel)]="pwd" name="password" matInput placeholder="password" type="password">
+          <input [(ngModel)]="pwd" name="password" matInput placeholder="Password" type="password">
         </mat-form-field>
         <label class="error">{{errorMessage}}</label>
         <br>
-        <mat-form-field>
-            <input [(ngModel)]="name" name="name" matInput placeholder="name">
+        <mat-form-field class="name">
+            <input [(ngModel)]="name" name="name" matInput placeholder="Name">
           </mat-form-field>
           <br>
-          <mat-form-field style="width: 100%">
-              <input [(ngModel)]="description" name="description" matInput placeholder="description">
+          <mat-form-field class="description" style="width: 15%">
+              <input [(ngModel)]="description" name="description" matInput placeholder="Description">
             </mat-form-field>
             <br>
             <button (click)="register()" mat-raised-button color="primary">Register</button>
     </form>
-    
   </mat-card-content>
 </mat-card>
+</div>
 <app-notifications></app-notifications>
