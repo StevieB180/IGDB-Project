@@ -43,6 +43,8 @@
             }
         }
         .summary {
+            width: 100%;
+            grid-column: 1/2;
             max-height: 100px;
             overflow: hidden;
             justify-self: center;
