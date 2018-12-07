@@ -8,10 +8,9 @@
         display: grid;
         grid-template-columns: 1fr auto;
         grid-template-rows: auto;
-        form {
-            margin-right: 20px;
-            min-width: 300px;
-        }
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+        
         .imgContainer {
             height: 100%;
 
@@ -28,6 +27,7 @@
         .splitter {
             grid-template-columns: auto;
             grid-template-rows: auto auto;
+            grid-row-gap: 10px;
             
             .imgContainer {
                 justify-self: center;
