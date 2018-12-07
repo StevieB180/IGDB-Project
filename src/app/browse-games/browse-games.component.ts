@@ -19,7 +19,7 @@ export class BrowseGamesComponent implements OnInit {
   //  TRUE  = Uses sample data from db.json                       //
   //                                                              //
   //////////////////////////////////////////////////////////////////
-  useSampleGames = false;
+  useSampleGames = true;
 
   gamesMaster: IGame[] = [];
   games: IGame[] = [];

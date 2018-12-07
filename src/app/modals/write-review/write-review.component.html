@@ -1,22 +1,22 @@
 <div class="modalContainer">
   <div class="header">Reviewing {{data.name}}</div>
   <div class="splitter">
-    <form>
-      <div class="form-group">
+    <div>
+      <div>
         <label for="rating">Rating:</label>
         <input class="form-control" name="rating" type="number" min="0" max="10"
         [(ngModel)]="rating">
       </div>
-      <div class="form-group">
+      <div>
         <label for="description">Review</label>
         <textarea class="form-control" name="description" [(ngModel)]="description"></textarea>
       </div>
-    </form>
+    </div>
     <div class="imgContainer">
         <img *ngIf='(data.cover)' height="100px" [src]="getGameCover(data)"/>
         <img *ngIf='!(data.cover)' height="100px" src='../../../assets/images/no-cover.png'/>
     </div>
-    <button type="submit" (click)="addReview()" class="btn-primary">Add</button>
+    <button type="submit" (click)="addReview()" class="btn btn-primary">Add</button>
   </div>
 </div>
 
