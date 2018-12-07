@@ -22,7 +22,7 @@ export class IgdbService {
   //Get initial game list from API
   getGamesFull(type: string) {
     console.log('Getting ' + type);
-    return this._http.get<IGame[]>(this.ENDPOINT + `/${type}/?fields=*&limit=10&count?&filter[release_dates.date][gt]=788982179000`,
+    return this._http.get<IGame[]>(this.ENDPOINT + `/${type}/?fields=*&limit=10&count?&filter[release_dates.date][gt]=788982179000&order=popularity:desc`,
     {headers: {
       "Accept":"application/json",
       "user-key":this.KEY
