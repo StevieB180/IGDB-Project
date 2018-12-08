@@ -29,9 +29,9 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.authService.signup(this.email, this.pwd, this.name);
-    console.log(this.email);
-    console.log(this.pwd);
-    console.log(this.name);
+    this.email,
+    this.pwd,
+    this.name;
   }
 
 }
