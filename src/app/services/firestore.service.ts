@@ -1,24 +1,8 @@
-// import { Injectable } from '@angular/core';
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class FirestoreService {
-
-//   constructor() { }
-// }
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { IReview, IReviewGame } from '../../models/user-review.model';
+import { IReviewGame } from '../../models/user-review.model';
 import { HttpClient, HttpErrorResponse} from '@angular/common/http';
-
-import { catchError, tap, map } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-
-//import 'rxjs/add/observable/throw';
-//import 'rxjs/add/operator/catch';
-//import 'rxjs/add/operator/do';
-
 
 @Injectable()
 export class FirestoreService {
@@ -28,13 +12,15 @@ export class FirestoreService {
   constructor(private _http: HttpClient, private _afs:AngularFirestore) { 
     this.gameReviewCollection = _afs.collection<IReviewGame>("reviews");
   }
-  //add reviews to a collection
+
+  //add reviews to firebase
   addReview(review: IReviewGame): void{
     console.log("Adding review object: ");
     console.log(review);
     this._afs.collection<IReviewGame>("reviews").doc(review.gameID.toString()).set(review);
   }
 
+  //Gest reviews for a specified game id
   getGameReviews(gameID: number){
     return this._afs.collection<IReviewGame>("reviews", ref => ref.where('gameID','==',gameID)).valueChanges();
   }
