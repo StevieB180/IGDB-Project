@@ -1,3 +1,4 @@
+<!-- Register html -->
 <div class="signin-content">
 <mat-card>
   <div class="header">
@@ -5,6 +6,7 @@
     </div>
   <mat-card-content>
     <form>
+       <!-- Data binding input elements -->
       <mat-form-field class="email">
         <input [(ngModel)]="email" name="email" matInput placeholder="Email" type="email">
       </mat-form-field>
@@ -21,6 +23,7 @@
               <input [(ngModel)]="description" name="description" matInput placeholder="Description">
             </mat-form-field>
             <br>
+            <!-- register button -->
             <button (click)="register()" mat-raised-button color="primary">Register</button>
     </form>
   </mat-card-content>

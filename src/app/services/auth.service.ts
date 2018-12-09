@@ -10,6 +10,7 @@ import * as firebase from 'firebase/';
 })
 export class AuthService {
   
+  //user observable
   private user: Observable<firebase.User>;
   private userName: string;
   loggedInStatus: boolean = false;
@@ -22,6 +23,8 @@ export class AuthService {
     return this.user;
   }
 
+  //authentication on email password and name
+  //send verification email to the user to accept
   signup(email: string, password: string, name: string) {
     // clear all messages
     this.notifier.display(false, '');
@@ -35,6 +38,8 @@ export class AuthService {
         setTimeout(() => {
           this.notifier.display(false, '');
         }, 10000);
+        //returns the verified user details to firebase to store
+        //with there uid
         return firebase.database().ref('users/' + res.user.uid).set({
           email: res.user.email,
           uid: res.user.uid,
@@ -58,6 +63,7 @@ export class AuthService {
       });
   }
 
+//send a verification email
   sendEmailVerification() {
     this._firebaseAuth.authState.subscribe(user => {
       user.sendEmailVerification()
@@ -67,6 +73,7 @@ export class AuthService {
     });
   }
 
+  //if valid info entered register and store users
   doRegister(value){
     return new Promise<any>((resolve, reject) => {
       firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
@@ -76,6 +83,7 @@ export class AuthService {
     })
   }
 
+  //allows login for a user that has been authenticted
   doLogin(value){
     return new Promise<any>((resolve, reject) => {
       firebase.auth().signInWithEmailAndPassword(value.email, value.password)
@@ -87,6 +95,7 @@ export class AuthService {
     })
   }
 
+  //logout user
   doLogout(){
     return new Promise((resolve, reject) => {
       if(firebase.auth().currentUser){

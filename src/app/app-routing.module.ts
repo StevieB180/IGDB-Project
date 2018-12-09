@@ -7,6 +7,8 @@ import { AuthGuard } from '../app/services/auth.guard';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
+  //authguard to prevent unauthenticated users from
+  //accessing restricted routes
   { path: 'home', component: HomeComponent,  canActivate: [AuthGuard] },
   { path: 'browse', component: BrowseGamesComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent},

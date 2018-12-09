@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+   //definging inputs
   errorMessage: string;
   email: string;
   pwd: string;
@@ -16,6 +17,8 @@ export class RegisterComponent implements OnInit {
   name: string;
   description: string;
   
+   //define registration form field and validators for email and password
+  //through the auth searvice (OAuth 2)
   form;
   constructor(private fb: FormBuilder, private myRoute: Router,
     private authService: AuthService) { 
@@ -28,6 +31,9 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    //enters your details with authservice
+  //details go to auth service once autherised
+  //regeristration will be sucessfull with firebase
     this.authService.signup(this.email, this.pwd, this.name);
     this.email,
     this.pwd,

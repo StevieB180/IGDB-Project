@@ -9,6 +9,9 @@ import { IImage } from '../../models/IImage';
 export class HomeComponent implements OnInit {
 
   constructor() { }
+
+  //images that are desplayed in the carrosell
+  //Sourced: npmjs.com
   imageUrls: (string | IImage)[] = [
     { url: 'https://i.redd.it/48t7k73gcycy.png' },
     { url: 'https://i.redd.it/i42lna99hyiy.png' },
@@ -18,6 +21,7 @@ export class HomeComponent implements OnInit {
     {url: 'http://i.imgur.com/5HS6gmr.jpg'}
     
   ];
+  //settings for the carosell
   height: string = '425px';
   minHeight: string;
   disableSwiping: boolean = false;

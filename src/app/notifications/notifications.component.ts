@@ -6,6 +6,8 @@ import { NotificationService } from '../services/notification.service';
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.scss']
 })
+
+//component for desplaying messages
 export class NotificationsComponent implements OnInit {
 display: boolean = false;
 message: string;

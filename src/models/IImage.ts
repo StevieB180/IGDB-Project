@@ -1,3 +1,4 @@
+//image interface for carosell
 export interface IImage {
     url: string | null;
     href?: string;

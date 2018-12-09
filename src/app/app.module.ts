@@ -15,10 +15,10 @@ import { MatDialogModule,
   MatTableModule,
   MatIconModule } from '@angular/material';
 
+//Angular material stuff
 import { FontAwesomeModule } from'@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons'
-
 library.add(faGoogle);
 library.add(faFacebook);
 
